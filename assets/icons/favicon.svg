@@ -1,0 +1,42 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  role="img"
+  aria-labelledby="favicon-title"
+>
+  <title id="favicon-title">Velmora Home Offers favicon</title>
+
+  <rect
+    width="64"
+    height="64"
+    rx="14"
+    fill="#10161B"
+  />
+
+  <path
+    d="M9 29.5L32 10L55 29.5V54H40V39H24V54H9V29.5Z"
+    fill="#58C7FF"
+  />
+
+  <path
+    d="M17 25.5L32 13L47 25.5L42.5 29.2L32 20.5L21.5 29.2L17 25.5Z"
+    fill="#F7F8F6"
+  />
+
+  <path
+    d="M24 39H40V54H24V39Z"
+    fill="#070A0D"
+  />
+
+  <path
+    d="M27 33L32 41L37 33H43L32 50L21 33H27Z"
+    fill="#F7F8F6"
+  />
+
+  <circle
+    cx="35.5"
+    cy="45.5"
+    r="1.8"
+    fill="#58C7FF"
+  />
+</svg>

@@ -1,0 +1,37 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 72 72"
+  role="img"
+  aria-labelledby="velmora-mark-title"
+>
+  <title id="velmora-mark-title">Velmora Home Offers logo mark</title>
+
+  <path
+    d="M8 33.25L36 10L64 33.25V62H45.5V43.5H26.5V62H8V33.25Z"
+    fill="#58C7FF"
+  />
+
+  <path
+    d="M19 28.5L36 14.5L53 28.5L47.4 33.1L36 23.7L24.6 33.1L19 28.5Z"
+    fill="#F7F8F6"
+  />
+
+  <path
+    d="M26.5 43.5H45.5V62H26.5V43.5Z"
+    fill="#10161B"
+  />
+
+  <path
+    d="M30.5 36L36 44.75L41.5 36H48L36 55L24 36H30.5Z"
+    fill="#F7F8F6"
+  />
+
+  <rect
+    x="38.5"
+    y="49"
+    width="3"
+    height="3"
+    rx="1.5"
+    fill="#58C7FF"
+  />
+</svg>
