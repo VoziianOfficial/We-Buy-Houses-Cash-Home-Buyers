@@ -957,9 +957,41 @@
 
 .contact-expectations {
     position: relative;
-    padding: var(--contact-section-space) 0;
+    padding: clamp(72px, 8vw, 118px) 0;
+    overflow: hidden;
+    isolation: isolate;
     color: var(--color-white, #f7f8f6);
-    background: var(--color-charcoal, #10161b);
+    background:
+        linear-gradient(180deg, rgba(7, 10, 13, 0.72), rgba(7, 10, 13, 0.82)),
+        url("../images/contact-hero-b.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.contact-expectations::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 18%, rgba(88, 199, 255, 0.18), transparent 30%),
+        linear-gradient(90deg, rgba(7, 10, 13, 0.86), rgba(7, 10, 13, 0.4));
+    content: "";
+    pointer-events: none;
+}
+
+.contact-expectations::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(169, 231, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(169, 231, 255, 0.055) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25), #000 42%, rgba(0, 0, 0, 0.2));
+    content: "";
+    opacity: 0.42;
+    pointer-events: none;
 }
 
 .contact-expectations__header {
@@ -968,7 +1000,7 @@
         minmax(0, 1.1fr) minmax(280px, 0.9fr);
     gap: clamp(34px, 7vw, 110px);
     align-items: end;
-    margin-bottom: clamp(44px, 6vw, 78px);
+    margin-bottom: clamp(28px, 4vw, 48px);
 }
 
 .contact-expectations .site-eyebrow {
@@ -979,61 +1011,112 @@
     max-width: 15ch;
     margin-top: 18px;
     color: var(--color-white, #f7f8f6);
+    text-shadow: 0 16px 42px rgba(0, 0, 0, 0.4);
 }
 
 .contact-expectations .site-copy {
-    color: rgba(247, 248, 246, 0.65);
+    color: rgba(247, 248, 246, 0.78);
 }
 
 .contact-expectations__grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 14px;
+    gap: clamp(14px, 1.7vw, 22px);
 }
 
 .contact-expectation {
+    position: relative;
     grid-column: span 6;
-    display: flex;
-    flex-direction: column;
-    min-height: 330px;
-    padding: clamp(24px, 3vw, 36px);
-    border: 1px solid var(--contact-dark-border);
-    border-radius: var(--contact-card-radius);
-    background: var(--color-surface, #161e24);
+    min-height: 165px;
+    padding: clamp(20px, 2.2vw, 28px) clamp(74px, 7vw, 96px) clamp(20px, 2.2vw, 28px) clamp(22px, 2.6vw, 34px);
+    overflow: hidden;
+    border: 1px solid rgba(169, 231, 255, 0.24);
+    border-radius: 16px;
+    background:
+        linear-gradient(135deg, rgba(247, 248, 246, 0.16), rgba(247, 248, 246, 0.045)),
+        rgba(16, 22, 27, 0.52);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.2),
+        inset 0 -22px 44px rgba(7, 10, 13, 0.18),
+        0 22px 60px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
     transition:
         transform 240ms ease,
-        border-color 240ms ease;
+        border-color 240ms ease,
+        background-color 240ms ease,
+        box-shadow 240ms ease;
 }
 
-.contact-expectation:nth-child(2),
-.contact-expectation:nth-child(3) {
-    background: var(--color-surface-soft, #202a32);
+.contact-expectation::before {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 86% 18%, rgba(88, 199, 255, 0.32), transparent 22%),
+        linear-gradient(120deg, rgba(247, 248, 246, 0.12), transparent 38%);
+    content: "";
+    opacity: 0.72;
+    pointer-events: none;
+}
+
+.contact-expectation::after {
+    position: absolute;
+    right: 19px;
+    bottom: 18px;
+    width: 72px;
+    height: 22px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 12px 50%, rgba(169, 231, 255, 0.76) 0 3px, transparent 4px),
+        radial-gradient(circle at 36px 50%, rgba(169, 231, 255, 0.46) 0 3px, transparent 4px),
+        radial-gradient(circle at 60px 50%, rgba(169, 231, 255, 0.28) 0 3px, transparent 4px);
+    content: "";
+    opacity: 0.72;
+    pointer-events: none;
 }
 
 .contact-expectation__icon {
-    width: 29px;
-    height: 29px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 1;
+    width: 46px;
+    height: 46px;
+    padding: 11px;
+    border: 1px solid rgba(169, 231, 255, 0.34);
+    border-radius: 50%;
     color: var(--color-sky, #58c7ff);
-    stroke-width: 1.55;
+    background:
+        radial-gradient(circle at 35% 28%, rgba(247, 248, 246, 0.34), rgba(247, 248, 246, 0.08) 40%, transparent 72%),
+        rgba(88, 199, 255, 0.12);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.3),
+        0 12px 28px rgba(0, 0, 0, 0.24);
+    stroke-width: 1.85;
 }
 
 .contact-expectation__title {
-    max-width: 17ch;
-    margin: auto 0 0;
+    position: relative;
+    z-index: 1;
+    max-width: none;
+    margin: 0;
     color: var(--color-white, #f7f8f6);
-    font-size: clamp(1.35rem, 2.25vw, 2.45rem);
-    font-weight: 570;
+    font-size: clamp(1.24rem, 1.05rem + 0.65vw, 1.72rem);
+    font-weight: 680;
     line-height: 1.05;
-    letter-spacing: -0.04em;
-    text-wrap: balance;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
 }
 
 .contact-expectation__text {
-    max-width: 600px;
-    margin: 17px 0 0;
-    color: rgba(247, 248, 246, 0.62);
-    font-size: 0.92rem;
-    line-height: 1.68;
+    position: relative;
+    z-index: 1;
+    max-width: 52ch;
+    margin: 13px 0 0;
+    color: rgba(247, 248, 246, 0.78);
+    font-size: clamp(0.98rem, 0.93rem + 0.16vw, 1.08rem);
+    line-height: 1.48;
 }
 
 .contact-information {
@@ -1193,8 +1276,13 @@
 
 @media (hover: hover) and (pointer: fine) {
     .contact-expectation:hover {
-        transform: translateY(-5px);
-        border-color: rgba(88, 199, 255, 0.56);
+        border-color: rgba(169, 231, 255, 0.55);
+        background-color: rgba(88, 199, 255, 0.08);
+        box-shadow:
+            inset 0 1px 0 rgba(247, 248, 246, 0.28),
+            inset 0 -22px 44px rgba(7, 10, 13, 0.16),
+            0 26px 70px rgba(0, 0, 0, 0.32);
+        transform: translateY(-6px);
     }
 
     .contact-checkbox__label:hover .contact-checkbox__control {
@@ -1268,10 +1356,15 @@
     .contact-expectations__header {
         grid-template-columns: 1fr;
         gap: 18px;
+        margin-bottom: 30px;
     }
 
     .contact-expectations .site-heading {
         max-width: 18ch;
+    }
+
+    .contact-expectations {
+        background-attachment: scroll;
     }
 
     .contact-collab__layout {
@@ -1489,8 +1582,16 @@
 
     .contact-expectation {
         grid-column: auto;
-        min-height: 290px;
-        padding: 24px;
+        min-height: 156px;
+        padding: 20px 78px 20px 22px;
+    }
+
+    .contact-expectation__title {
+        white-space: normal;
+    }
+
+    .contact-expectation__text {
+        max-width: none;
     }
 
     .contact-information__image {
