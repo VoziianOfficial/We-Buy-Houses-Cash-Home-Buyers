@@ -679,6 +679,260 @@ address {
     }
 }
 
+/* ==========================================================================
+   Selling Experience (parallax + compact service cards)
+   ========================================================================== */
+
+.selling-experience {
+    background: var(--color-black);
+    color: var(--color-white);
+    overflow: hidden;
+}
+
+.selling-experience__visual {
+    position: relative;
+    min-height: clamp(300px, 35vw, 490px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    isolation: isolate;
+}
+
+.selling-experience__visual::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(7, 10, 13, 0.56);
+    content: "";
+}
+
+.selling-experience__visual-inner {
+    display: flex;
+    min-height: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: clamp(44px, 7vw, 92px);
+    text-align: center;
+}
+
+.selling-experience__visual .site-eyebrow {
+    justify-content: center;
+    color: var(--color-sky-light);
+}
+
+.selling-experience__heading {
+    max-width: 920px;
+    margin: clamp(16px, 2vw, 24px) auto 0;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: clamp(2.45rem, 1.7rem + 3vw, 5.3rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.04;
+}
+
+.selling-experience__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: clamp(22px, 3vw, 34px);
+}
+
+.selling-experience__button {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 20px;
+    border: 1px solid rgba(247, 248, 246, 0.32);
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 760;
+    line-height: 1.1;
+    text-transform: uppercase;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.selling-experience__button svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+}
+
+.selling-experience__button--primary {
+    border-color: var(--color-sky);
+    background: var(--color-sky);
+    color: var(--color-ink);
+}
+
+.selling-experience__button--ghost {
+    background: rgba(7, 10, 13, 0.2);
+}
+
+.selling-experience__button:hover,
+.selling-experience__button:focus-visible {
+    transform: translateY(-2px);
+}
+
+.selling-experience__button--ghost:hover,
+.selling-experience__button--ghost:focus-visible {
+    border-color: var(--color-sky-light);
+    background: var(--color-white);
+    color: var(--color-ink);
+}
+
+.selling-experience__cards-band {
+    padding: clamp(34px, 4vw, 58px) 0;
+    background: var(--color-black);
+}
+
+.selling-experience__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-inline: 1px solid rgba(247, 248, 246, 0.2);
+}
+
+.selling-experience-card {
+    position: relative;
+    min-height: clamp(190px, 16vw, 245px);
+    padding: clamp(26px, 3vw, 42px) clamp(20px, 2.4vw, 34px);
+    border-left: 1px solid rgba(247, 248, 246, 0.2);
+    background: rgba(16, 22, 27, 0.78);
+}
+
+.selling-experience-card:first-child {
+    border-left: 0;
+}
+
+.selling-experience-card__icon {
+    position: absolute;
+    top: clamp(20px, 2.2vw, 28px);
+    right: clamp(18px, 2vw, 28px);
+    width: 34px;
+    height: 34px;
+    color: var(--color-sky);
+    stroke-width: 1.7;
+}
+
+.selling-experience-card__title {
+    max-width: calc(100% - 48px);
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: clamp(1.18rem, 1rem + 0.65vw, 1.7rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.12;
+    white-space: nowrap;
+}
+
+.selling-experience-card__text {
+    max-width: 28ch;
+    margin: clamp(20px, 2.3vw, 30px) 0 0;
+    color: rgba(247, 248, 246, 0.68);
+    font-size: clamp(0.88rem, 0.82rem + 0.18vw, 1rem);
+    font-weight: 600;
+    line-height: 1.65;
+}
+
+.selling-experience--cards-first .selling-experience__cards-band {
+    padding-top: clamp(42px, 5vw, 72px);
+}
+
+@media (max-width: 1024px) {
+    .selling-experience__visual {
+        background-attachment: scroll;
+    }
+
+    .selling-experience__cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border: 1px solid rgba(247, 248, 246, 0.2);
+    }
+
+    .selling-experience-card:nth-child(odd) {
+        border-left: 0;
+    }
+
+    .selling-experience-card:nth-child(n + 3) {
+        border-top: 1px solid rgba(247, 248, 246, 0.2);
+    }
+}
+
+@media (max-width: 620px) {
+    .selling-experience__visual {
+        min-height: 360px;
+    }
+
+    .selling-experience__heading {
+        max-width: 11ch;
+        font-size: clamp(2rem, 8.5vw, 2.65rem);
+        line-height: 1.08;
+    }
+
+    .selling-experience__actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .selling-experience__button {
+        width: 100%;
+    }
+
+    .selling-experience__cards {
+        grid-template-columns: 1fr;
+    }
+
+    .selling-experience-card,
+    .selling-experience-card:nth-child(odd) {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        column-gap: 16px;
+        min-height: 0;
+        padding: 24px 22px 26px;
+        border-left: 0;
+        border-top: 1px solid rgba(247, 248, 246, 0.2);
+    }
+
+    .selling-experience-card__icon {
+        position: static;
+        grid-column: 2;
+        grid-row: 1;
+        width: 30px;
+        height: 30px;
+        justify-self: end;
+    }
+
+    .selling-experience-card:first-child {
+        border-top: 0;
+    }
+
+    .selling-experience-card__title {
+        grid-column: 1;
+        grid-row: 1;
+        max-width: 100%;
+        white-space: normal;
+    }
+
+    .selling-experience-card__text {
+        grid-column: 1 / -1;
+        max-width: 30ch;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .selling-experience__visual {
+        background-attachment: scroll;
+    }
+}
+
 .site-button-row {
     display: flex;
     flex-wrap: wrap;
