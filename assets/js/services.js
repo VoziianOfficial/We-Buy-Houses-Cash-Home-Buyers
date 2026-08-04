@@ -739,74 +739,6 @@
             });
     };
 
-    const setFlipCardState = (
-        card,
-        flipped
-    ) => {
-        const button = card.querySelector(
-            "[data-flip-card-button]"
-        );
-
-        card.classList.toggle(
-            "is-flipped",
-            flipped
-        );
-
-        if (button) {
-            button.setAttribute(
-                "aria-pressed",
-                flipped ? "true" : "false"
-            );
-        }
-    };
-
-    const initializeFlipCards = () => {
-        document
-            .querySelectorAll(
-                "[data-flip-card]"
-            )
-            .forEach((card) => {
-                const button = card.querySelector(
-                    "[data-flip-card-button]"
-                );
-
-                if (!button) {
-                    return;
-                }
-
-                setFlipCardState(
-                    card,
-                    card.classList.contains(
-                        "is-flipped"
-                    )
-                );
-
-                button.addEventListener(
-                    "click",
-                    () => {
-                        setFlipCardState(
-                            card,
-                            !card.classList.contains(
-                                "is-flipped"
-                            )
-                        );
-                    }
-                );
-
-                button.addEventListener(
-                    "keydown",
-                    (event) => {
-                        if (event.key !== "Escape") {
-                            return;
-                        }
-
-                        setFlipCardState(card, false);
-                        button.focus();
-                    }
-                );
-            });
-    };
-
     const propertyGalleryTimers = new WeakMap();
 
     const getPropertyGalleryCategories = (item) => {
@@ -1739,7 +1671,6 @@
 
         initializeHeroSliders();
         initializeExpandableCards();
-        initializeFlipCards();
         initializeCardsSliders();
         initializePhotoGalleries();
         initializePropertyGallery();
