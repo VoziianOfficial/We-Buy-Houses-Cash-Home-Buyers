@@ -2140,7 +2140,7 @@
 }
 
 .service-photo-gallery .site-section-header {
-    grid-template-columns: minmax(0, 1.32fr) minmax(260px, 0.54fr);
+
     gap: clamp(24px, 4vw, 60px);
     align-items: end;
     margin-bottom: clamp(22px, 2.8vw, 36px);
