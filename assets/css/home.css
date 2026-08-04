@@ -1646,38 +1646,6 @@
     line-height: 1.75;
 }
 
-.home-cta-band {
-    background: var(--color-sky);
-    color: var(--color-ink);
-}
-
-.home-cta-band__inner {
-    display: grid;
-    min-height: 150px;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 32px;
-    align-items: center;
-    padding-block: 28px;
-}
-
-.home-cta-band__content {
-    display: grid;
-    gap: 8px;
-}
-
-.home-cta-band__title {
-    font-size: clamp(1.65rem, 1.28rem + 1.6vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1.08;
-}
-
-.home-cta-band__text {
-    color: rgba(7, 16, 23, 0.7);
-    font-size: 0.92rem;
-    line-height: 1.55;
-}
-
 @media (max-width: 1280px) {
     .home-options__list {
         min-height: 560px;
@@ -2021,14 +1989,6 @@
 
     .home-testimonial {
         min-height: 360px;
-    }
-
-    .home-cta-band__inner {
-        min-height: 0;
-        grid-template-columns: 1fr;
-        justify-items: center;
-        padding-block: 34px;
-        text-align: center;
     }
 
     .home-property-carousel__slide {

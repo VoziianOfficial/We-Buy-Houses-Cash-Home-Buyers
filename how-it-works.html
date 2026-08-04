@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/trivision-hero.css">
+    <link rel="stylesheet" href="assets/css/billboard-cta.css">
     <link rel="stylesheet" href="assets/css/services.css">
 
     <script src="config/config.js"></script>
@@ -56,6 +57,7 @@
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/trivision-hero.js" defer></script>
+    <script src="assets/js/billboard-cta.js" defer></script>
     <script src="assets/js/services.js" defer></script>
 </head>
 
@@ -651,24 +653,40 @@
                 </div>
             </section>
 
-            <section class="service-cta" aria-labelledby="process-cta-title">
-                <div class="site-container-wide service-cta__inner">
-                    <div class="service-cta__content">
-                        <h2 class="service-cta__title" id="process-cta-title">
-                            Still deciding whether a direct sale fits?
-                        </h2>
+            <section class="billboard-cta-section" aria-labelledby="process-cta-title">
+                <div class="site-container-wide">
+                    <div class="billboard-cta billboard-cta--surface" data-billboard-cta
+                        data-billboard-image="assets/images/services/how-it-works-hero-b.svg" data-text-duration="5800"
+                        data-photo-duration="4600" data-slat-direction="reverse">
+                        <div class="billboard-cta__card">
+                            <div class="billboard-cta__slats" data-billboard-slats aria-hidden="true"></div>
 
-                        <p class="service-cta__text">
-                            Share the available information and allow the team to review
-                            whether a direct sale may fit the house and your circumstances.
-                        </p>
+                            <div class="billboard-cta__content">
+                                <p class="billboard-cta__eyebrow">Ready For Step One?</p>
+
+                                <h2 class="billboard-cta__title" id="process-cta-title">
+                                    Start The Property Review.
+                                </h2>
+
+                                <p class="billboard-cta__text">
+                                    Send the basics and see what a direct-sale timeline could
+                                    look like for the house.
+                                </p>
+
+                                <div class="billboard-cta__actions">
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--primary"
+                                        href="contact.html#property-offer-form" aria-label="Request a property review">
+                                        <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--secondary"
+                                        href="frequently-asked-questions.html" aria-label="Learn how the process works">
+                                        <i data-lucide="circle-help" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <a class="site-button site-button--dark" href="contact.html#property-offer-form">
-                        <i data-lucide="clipboard-check" aria-hidden="true"></i>
-
-                        Request a Property Review
-                    </a>
                 </div>
             </section>
 

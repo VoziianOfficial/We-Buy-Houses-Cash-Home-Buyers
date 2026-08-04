@@ -1,0 +1,313 @@
+/*
+  Billboard CTA: compact, wide, low card that auto-flips between a text
+  state and a photo state via rotating vertical slats (2-sided flip per
+  slat, staggered left-to-right or right-to-left). One universal
+  component, reused across pages with data-attributes + modifier classes.
+  All selectors are namespaced under .billboard-cta.
+*/
+
+.billboard-cta-section {
+    padding-block: clamp(48px, 6vw, 72px);
+    background: var(--color-white);
+}
+
+.billboard-cta-section--warm {
+    background: var(--color-warm-white);
+}
+
+.billboard-cta {
+    --billboard-accent: var(--color-sky);
+    --billboard-ink: var(--color-ink);
+    --billboard-slat-count: 16;
+    --billboard-duration: 1100ms;
+    --billboard-stagger: 45ms;
+    --billboard-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --billboard-radius: 32px 8px 32px 8px;
+
+    position: relative;
+    width: 100%;
+}
+
+.billboard-cta__card {
+    position: relative;
+    height: clamp(260px, 25vw, 340px);
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--billboard-radius);
+    background: var(--billboard-accent);
+    color: var(--billboard-ink);
+    box-shadow: 0 24px 60px rgba(7, 16, 23, 0.12);
+}
+
+/* ---------- color modifiers ---------- */
+
+.billboard-cta--sky {
+    --billboard-accent: var(--color-sky);
+    --billboard-ink: var(--color-ink);
+}
+
+.billboard-cta--sky-light {
+    --billboard-accent: var(--color-sky-light);
+    --billboard-ink: var(--color-ink);
+}
+
+.billboard-cta--charcoal {
+    --billboard-accent: var(--color-charcoal);
+    --billboard-ink: var(--color-white);
+}
+
+.billboard-cta--surface {
+    --billboard-accent: var(--color-surface);
+    --billboard-ink: var(--color-white);
+}
+
+.billboard-cta--ink {
+    --billboard-accent: var(--color-ink);
+    --billboard-ink: var(--color-white);
+}
+
+/* ---------- slats (billboard flip layer) ---------- */
+
+.billboard-cta__slats {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    perspective: 1800px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.billboard-cta__slat {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform var(--billboard-duration) var(--billboard-ease);
+    transform-origin: center;
+}
+
+.billboard-cta__face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+}
+
+.billboard-cta__face--front {
+    background-color: var(--billboard-accent);
+    transform: rotateY(0deg);
+}
+
+.billboard-cta__face--back {
+    transform: rotateY(180deg);
+}
+
+/*
+  Photo crossfade layer. Stays invisible (opacity: 0, no transition) in
+  normal mode so it never paints over the rotating slats — it is only
+  switched on inside the prefers-reduced-motion block below, where the
+  slats are hidden entirely and this becomes the sole photo-state visual.
+*/
+
+.billboard-cta__photo-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--billboard-accent);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ---------- content layer ---------- */
+
+.billboard-cta__content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    max-width: 58%;
+    min-width: 0;
+    padding: clamp(20px, 3vw, 40px) clamp(24px, 4vw, 52px);
+    text-align: left;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 260ms ease,
+        transform 260ms ease;
+}
+
+.billboard-cta__content.is-hidden {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.billboard-cta--content-right .billboard-cta__content {
+    margin-left: auto;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.billboard-cta__eyebrow {
+    margin: 0 0 8px;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.72;
+}
+
+.billboard-cta__title {
+    display: -webkit-box;
+    max-width: 20ch;
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.05rem + 1.9vw, 2.6rem);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.billboard-cta__text {
+    display: -webkit-box;
+    max-width: 42ch;
+    margin: 10px 0 0;
+    overflow: hidden;
+    color: currentColor;
+    opacity: 0.78;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.billboard-cta__actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 12px;
+    margin-top: clamp(16px, 2.4vw, 26px);
+}
+
+.billboard-cta--content-right .billboard-cta__actions {
+    justify-content: flex-end;
+}
+
+.billboard-cta__icon-button {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: clamp(52px, 5vw, 64px);
+    height: clamp(52px, 5vw, 64px);
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    color: currentColor;
+    opacity: 0.9;
+    transition:
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        opacity var(--transition-fast);
+}
+
+.billboard-cta__icon-button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.9;
+}
+
+.billboard-cta__icon-button:hover,
+.billboard-cta__icon-button:focus-visible {
+    background-color: var(--billboard-ink);
+    color: var(--billboard-accent);
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+.billboard-cta__icon-button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1023px) {
+    .billboard-cta {
+        --billboard-slat-count: 12;
+    }
+
+    .billboard-cta__card {
+        height: 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    .billboard-cta {
+        --billboard-slat-count: 9;
+    }
+
+    .billboard-cta__card {
+        height: clamp(390px, 100vw, 460px);
+    }
+
+    .billboard-cta__content,
+    .billboard-cta--content-right .billboard-cta__content {
+        max-width: 100%;
+        align-items: center;
+        margin-left: 0;
+        padding: clamp(24px, 6vw, 34px);
+        text-align: center;
+    }
+
+    .billboard-cta__title,
+    .billboard-cta__text {
+        max-width: 34ch;
+        -webkit-line-clamp: 3;
+    }
+
+    .billboard-cta__actions,
+    .billboard-cta--content-right .billboard-cta__actions {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .billboard-cta__slats {
+        display: none;
+    }
+
+    .billboard-cta__photo-fallback {
+        transition: opacity 900ms ease;
+    }
+
+    .billboard-cta.is-photo .billboard-cta__photo-fallback {
+        opacity: 1;
+    }
+
+    .billboard-cta__content {
+        transition:
+            opacity 260ms ease,
+            transform 260ms ease;
+    }
+}

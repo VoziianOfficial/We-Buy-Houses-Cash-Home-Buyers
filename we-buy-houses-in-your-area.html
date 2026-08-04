@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/trivision-hero.css">
+    <link rel="stylesheet" href="assets/css/billboard-cta.css">
     <link rel="stylesheet" href="assets/css/services.css">
 
     <script src="config/config.js"></script>
@@ -55,6 +56,7 @@
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/trivision-hero.js" defer></script>
+    <script src="assets/js/billboard-cta.js" defer></script>
     <script src="assets/js/services.js" defer></script>
 </head>
 
@@ -423,28 +425,40 @@
                 </div>
             </section>
 
-            <section class="service-cta" aria-labelledby="area-cta-title">
-                <div class="site-container-wide service-cta__inner">
-                    <div class="service-cta__content">
-                        <h2 class="service-cta__title" id="area-cta-title">
-                            Tell us exactly where the property is located.
-                        </h2>
+            <section class="billboard-cta-section" aria-labelledby="area-cta-title">
+                <div class="site-container-wide">
+                    <div class="billboard-cta billboard-cta--surface billboard-cta--content-right" data-billboard-cta
+                        data-billboard-image="assets/images/services/areas-hero-b.svg" data-text-duration="5600"
+                        data-photo-duration="4500" data-slat-direction="forward">
+                        <div class="billboard-cta__card">
+                            <div class="billboard-cta__slats" data-billboard-slats aria-hidden="true"></div>
 
-                        <p class="service-cta__text">
-                            Share the complete address and property details so the team can
-                            review the location together with the house and your
-                            circumstances.
-                        </p>
+                            <div class="billboard-cta__content">
+                                <p class="billboard-cta__eyebrow">Local To Charlotte</p>
+
+                                <h2 class="billboard-cta__title" id="area-cta-title">
+                                    Confirm We Cover The Address.
+                                </h2>
+
+                                <p class="billboard-cta__text">
+                                    Share the complete address so the team can confirm the
+                                    service area and review the property together.
+                                </p>
+
+                                <div class="billboard-cta__actions">
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--primary"
+                                        href="contact.html#property-offer-form" aria-label="Request a property review">
+                                        <i data-lucide="key-round" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--secondary"
+                                        href="compare-to-listing.html" aria-label="Learn how the process works">
+                                        <i data-lucide="route" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <a class="site-button site-button--dark" href="contact.html#property-offer-form"
-                        data-service-primary-cta>
-                        <i data-lucide="map-pin" aria-hidden="true"></i>
-
-                        <span data-service-primary-cta-label>
-                            Request an Offer
-                        </span>
-                    </a>
                 </div>
             </section>
 

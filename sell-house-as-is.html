@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/trivision-hero.css">
+    <link rel="stylesheet" href="assets/css/billboard-cta.css">
     <link rel="stylesheet" href="assets/css/services.css">
 
     <script src="config/config.js"></script>
@@ -55,6 +56,7 @@
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
     <script src="assets/js/trivision-hero.js" defer></script>
+    <script src="assets/js/billboard-cta.js" defer></script>
     <script src="assets/js/services.js" defer></script>
 </head>
 
@@ -577,27 +579,40 @@
                 </div>
             </section>
 
-            <section class="service-cta" aria-labelledby="as-is-cta-title">
-                <div class="site-container-wide service-cta__inner">
-                    <div class="service-cta__content">
-                        <h2 class="service-cta__title" id="as-is-cta-title">
-                            Describe the property before spending time on repairs.
-                        </h2>
+            <section class="billboard-cta-section" aria-labelledby="as-is-cta-title">
+                <div class="site-container-wide">
+                    <div class="billboard-cta billboard-cta--sky-light" data-billboard-cta
+                        data-billboard-image="assets/images/services/sell-as-is-hero-b.svg" data-text-duration="5500"
+                        data-photo-duration="4500" data-slat-direction="reverse">
+                        <div class="billboard-cta__card">
+                            <div class="billboard-cta__slats" data-billboard-slats aria-hidden="true"></div>
 
-                        <p class="service-cta__text">
-                            Share the current condition and explore whether a direct as-is
-                            option may be available for the house.
-                        </p>
+                            <div class="billboard-cta__content">
+                                <p class="billboard-cta__eyebrow">Skip The Repairs</p>
+
+                                <h2 class="billboard-cta__title" id="as-is-cta-title">
+                                    Sell The House As-Is.
+                                </h2>
+
+                                <p class="billboard-cta__text">
+                                    Share the current condition and see whether a direct
+                                    as-is option may be available.
+                                </p>
+
+                                <div class="billboard-cta__actions">
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--primary"
+                                        href="contact.html#property-offer-form" aria-label="Request a property review">
+                                        <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a class="billboard-cta__icon-button billboard-cta__icon-button--secondary"
+                                        href="how-it-works.html" aria-label="Learn how the process works">
+                                        <i data-lucide="info" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <a class="site-button site-button--dark" href="contact.html#property-offer-form"
-                        data-service-primary-cta>
-                        <i data-lucide="wrench" aria-hidden="true"></i>
-
-                        <span data-service-primary-cta-label>
-                            Request an Offer
-                        </span>
-                    </a>
                 </div>
             </section>
 
