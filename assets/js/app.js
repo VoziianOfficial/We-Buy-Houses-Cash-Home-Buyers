@@ -56,6 +56,167 @@
         }, config);
     };
 
+
+    const originalSiteIdentity = Object.freeze({
+        brandName: "Velmora Home Offers",
+        legalName: "Velmora Property Solutions LLC",
+        email: "hello@velmorahomeoffers.com",
+        address: "128 Meridian Row, Charlotte, NC 28203, United States"
+    });
+
+    const currentSiteIdentity = Object.freeze({
+        brandName:
+            String(config.brand?.name || originalSiteIdentity.brandName),
+
+        legalName:
+            String(
+                config.brand?.legalName ||
+                originalSiteIdentity.legalName
+            ),
+
+        email:
+            String(
+                config.contact?.recipientEmail ||
+                originalSiteIdentity.email
+            ),
+
+        address:
+            String(
+                config.contact?.address ||
+                originalSiteIdentity.address
+            )
+    });
+
+    const identityReplacements = Object.keys(
+        originalSiteIdentity
+    )
+        .map((key) => {
+            return [
+                originalSiteIdentity[key],
+                currentSiteIdentity[key]
+            ];
+        })
+        .filter(([originalValue, currentValue]) => {
+            return (
+                originalValue &&
+                currentValue &&
+                originalValue !== currentValue
+            );
+        })
+        .sort((firstPair, secondPair) => {
+            return secondPair[0].length - firstPair[0].length;
+        });
+
+    const replaceSiteIdentityValue = (value) => {
+        if (typeof value !== "string" || !value) {
+            return value;
+        }
+
+        return identityReplacements.reduce(
+            (result, [originalValue, currentValue]) => {
+                return result
+                    .split(originalValue)
+                    .join(currentValue);
+            },
+            value
+        );
+    };
+
+    const syncSiteIdentity = (root = document) => {
+        const ignoredSelector =
+            "script, style, noscript, template";
+
+        const updateTextNode = (node) => {
+            const parent = node.parentElement;
+
+            if (
+                !parent ||
+                parent.closest(ignoredSelector)
+            ) {
+                return;
+            }
+
+            const currentValue = node.nodeValue || "";
+            const nextValue =
+                replaceSiteIdentityValue(currentValue);
+
+            if (currentValue !== nextValue) {
+                node.nodeValue = nextValue;
+            }
+        };
+
+        const updateElement = (element) => {
+            if (
+                !(element instanceof Element) ||
+                element.matches(ignoredSelector)
+            ) {
+                return;
+            }
+
+            Array.from(element.attributes).forEach(
+                (attribute) => {
+                    const nextValue =
+                        replaceSiteIdentityValue(
+                            attribute.value
+                        );
+
+                    if (nextValue !== attribute.value) {
+                        element.setAttribute(
+                            attribute.name,
+                            nextValue
+                        );
+                    }
+                }
+            );
+        };
+
+        if (root.nodeType === Node.TEXT_NODE) {
+            updateTextNode(root);
+        }
+
+        if (root.nodeType === Node.ELEMENT_NODE) {
+            updateElement(root);
+        }
+
+        const walker = document.createTreeWalker(
+            root,
+            NodeFilter.SHOW_ELEMENT |
+            NodeFilter.SHOW_TEXT
+        );
+
+        while (walker.nextNode()) {
+            const node = walker.currentNode;
+
+            if (node.nodeType === Node.TEXT_NODE) {
+                updateTextNode(node);
+            }
+
+            if (node.nodeType === Node.ELEMENT_NODE) {
+                updateElement(node);
+            }
+        }
+    };
+
+    const siteIdentityObserver = new MutationObserver(
+        (mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === "childList") {
+                    mutation.addedNodes.forEach((node) => {
+                        syncSiteIdentity(node);
+                    });
+                }
+
+                if (mutation.type === "characterData") {
+                    syncSiteIdentity(mutation.target);
+                }
+
+                if (mutation.type === "attributes") {
+                    syncSiteIdentity(mutation.target);
+                }
+            });
+        }
+    );
+
     const getLinkInformation = (href) => {
         if (!href || typeof href !== "string") {
             return {
@@ -115,7 +276,20 @@
 
     const createBrandMarkup = (modifierClass = "") => {
         const brand = config.brand || {};
-        const wordmark = brand.wordmark || {};
+
+        const brandName = String(
+            brand.name || "Company"
+        ).trim();
+
+        const brandWords = brandName
+            .split(/\s+/)
+            .filter(Boolean);
+
+        const wordmarkPrimary =
+            brandWords.shift() || brandName;
+
+        const wordmarkSecondary =
+            brandWords.join(" ");
 
         const classes = ["site-brand"];
 
@@ -141,11 +315,11 @@
 
         <span class="site-brand__text">
           <span class="site-brand__primary">
-            ${escapeHTML(wordmark.primary || brand.name || "")}
+            ${escapeHTML(wordmarkPrimary)}
           </span>
 
           <span class="site-brand__secondary">
-            ${escapeHTML(wordmark.secondary || "")}
+            ${escapeHTML(wordmarkSecondary)}
           </span>
         </span>
       </a>
@@ -593,6 +767,18 @@
       </div>
     `;
     };
+
+    syncSiteIdentity(document);
+
+    siteIdentityObserver.observe(
+        document.documentElement,
+        {
+            subtree: true,
+            childList: true,
+            characterData: true,
+            attributes: true
+        }
+    );
 
     const getCookiePreference = () => {
         const cookie = config.cookie || {};
