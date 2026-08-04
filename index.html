@@ -41,11 +41,12 @@
 
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 
-    <link rel="preload" href="assets/images/home/hero-neighborhood.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/home/home-hero-a.svg" as="image" type="image/svg+xml">
 
     <link rel="stylesheet" href="assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/trivision-hero.css">
     <link rel="stylesheet" href="assets/css/home.css">
 
     <script src="config/config.js"></script>
@@ -53,6 +54,7 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/trivision-hero.js" defer></script>
     <script src="assets/js/home.js" defer></script>
 </head>
 
@@ -66,83 +68,63 @@
     <div data-mobile-menu></div>
 
     <main class="home-main" id="main-content">
-        <section class="home-hero" id="top" aria-labelledby="home-hero-title" data-home-hero>
-            <div class="home-hero__layers" aria-hidden="true">
-                <img class="home-hero__layer home-hero__layer--sky" src="assets/images/home/hero-neighborhood.webp"
+        <section class="trivision-hero" id="top" aria-labelledby="home-hero-title" data-trivision-hero
+            data-trivision-hero-key="home">
+            <div class="trivision-hero__stage" data-trivision-stage aria-hidden="true">
+                <img class="trivision-hero__fallback" data-trivision-fallback src="assets/images/home/home-hero-a.svg"
                     alt="" width="1920" height="1080" fetchpriority="high">
 
-                <img class="home-hero__layer home-hero__layer--distant" src="assets/images/home/hero-distant-houses.png"
-                    alt="" width="1920" height="1080" fetchpriority="high">
-
-                <img class="home-hero__layer home-hero__layer--house" src="assets/images/home/hero-main-house.png"
-                    alt="" width="1920" height="1080" fetchpriority="high">
-
-                <img class="home-hero__layer home-hero__layer--foreground" src="assets/images/home/hero-foreground.png"
-                    alt="" width="1920" height="1080" fetchpriority="high">
+                <div class="trivision-hero__slats" data-trivision-slats></div>
             </div>
 
-            <div class="home-hero__content-wrap">
-                <div class="site-container-wide">
-                    <div class="home-hero__content">
-                        <span class="site-eyebrow home-hero__eyebrow" data-site-text="home.hero.eyebrow">
-                            Charlotte-Area Cash Home Buyers
-                        </span>
+            <div class="trivision-hero__overlay" aria-hidden="true"></div>
 
-                        <h1 class="home-hero__title" id="home-hero-title" data-site-text="home.hero.title">
-                            A Clearer Way to Sell Your House
-                        </h1>
+            <div class="trivision-hero__content-wrap">
+                <div class="trivision-hero__content" data-trivision-content>
+                    <span class="site-eyebrow trivision-hero__eyebrow" data-trivision-eyebrow>
+                        Charlotte-Area Cash Home Buyers
+                    </span>
 
-                        <p class="home-hero__text" data-site-text="home.hero.text">
-                            Share the property details, explore a tailored direct-sale
-                            option, and choose whether the process fits your plans.
-                        </p>
+                    <h1 class="trivision-hero__title" id="home-hero-title" data-trivision-title>
+                        A Clearer Way to Sell Your House
+                    </h1>
 
-                        <div class="home-hero__actions">
-                            <a class="site-button site-button--sky" href="contact.html#property-offer-form"
-                                data-site-href="home.hero.primaryCta.href">
-                                <i data-lucide="key-round" aria-hidden="true"></i>
+                    <p class="trivision-hero__text" data-trivision-text>
+                        Share the property details, explore a tailored direct-sale
+                        option, and choose whether the process fits your plans.
+                    </p>
 
-                                <span data-site-text="home.hero.primaryCta.label">
-                                    Request a Cash Offer
-                                </span>
-                            </a>
+                    <div class="trivision-hero__actions">
+                        <a class="site-button site-button--sky" href="contact.html#property-offer-form"
+                            data-trivision-primary>
+                            <i data-lucide="key-round" aria-hidden="true"></i>
 
-                            <a class="site-button site-button--outline" href="how-it-works.html"
-                                data-site-href="home.hero.secondaryCta.href">
-                                <i data-lucide="clipboard-check" aria-hidden="true"></i>
-
-                                <span data-site-text="home.hero.secondaryCta.label">
-                                    See How It Works
-                                </span>
-                            </a>
-                        </div>
-
-                        <div class="home-hero__meta" aria-label="Direct property sale benefits">
-                            <span class="home-hero__meta-item">
-                                <i data-lucide="wrench" aria-hidden="true"></i>
-
-                                Sell in the current condition
+                            <span data-trivision-primary-label>
+                                Request a Cash Offer
                             </span>
+                        </a>
 
-                            <span class="home-hero__meta-item">
-                                <i data-lucide="badge-check" aria-hidden="true"></i>
+                        <a class="site-button site-button--outline" href="how-it-works.html" data-trivision-secondary>
+                            <i data-lucide="clipboard-check" aria-hidden="true"></i>
 
-                                No Velmora agent commission
+                            <span data-trivision-secondary-label>
+                                See How It Works
                             </span>
-
-                            <span class="home-hero__meta-item">
-                                <i data-lucide="calendar-clock" aria-hidden="true"></i>
-
-                                Discuss a flexible timeline
-                            </span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <span class="home-hero__scroll-cue" aria-hidden="true">
-                Explore
-            </span>
+            <div class="trivision-hero__dots" data-trivision-dots aria-label="Choose a hero slide">
+                <button class="trivision-hero__dot is-active" type="button" data-trivision-dot="0"
+                    aria-label="Show slide 1" aria-current="true"></button>
+
+                <button class="trivision-hero__dot" type="button" data-trivision-dot="1"
+                    aria-label="Show slide 2"></button>
+
+                <button class="trivision-hero__dot" type="button" data-trivision-dot="2"
+                    aria-label="Show slide 3"></button>
+            </div>
         </section>
 
         <section class="site-section home-options" id="selling-options" aria-labelledby="home-options-title">
@@ -166,7 +148,7 @@
 
                 <div class="home-options__list" data-home-options aria-label="Home selling information">
                     <article class="home-option is-active" data-option-card>
-                        <img class="home-option__image" src="assets/images/services/cash-offer-hero-a.webp" alt=""
+                        <img class="home-option__image" src="assets/images/services/cash-offer-hero-a.svg" alt=""
                             width="960" height="1280" loading="lazy">
 
                         <div class="home-option__content">
@@ -194,7 +176,7 @@
                     </article>
 
                     <article class="home-option" data-option-card>
-                        <img class="home-option__image" src="assets/images/services/sell-as-is-hero-a.webp" alt=""
+                        <img class="home-option__image" src="assets/images/services/sell-as-is-hero-a.svg" alt=""
                             width="960" height="1280" loading="lazy">
 
                         <div class="home-option__content">
@@ -222,7 +204,7 @@
                     </article>
 
                     <article class="home-option" data-option-card>
-                        <img class="home-option__image" src="assets/images/services/areas-hero-a.webp" alt=""
+                        <img class="home-option__image" src="assets/images/services/areas-hero-a.svg" alt=""
                             width="960" height="1280" loading="lazy">
 
                         <div class="home-option__content">

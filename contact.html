@@ -40,16 +40,18 @@
 
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 
-    <link rel="preload" href="assets/images/contact/contact-hero.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/contact/contact-hero-a.svg" as="image" type="image/svg+xml">
 
     <link rel="stylesheet" href="assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/trivision-hero.css">
     <link rel="stylesheet" href="assets/css/contact.css">
 
     <script src="config/config.js"></script>
     <script src="assets/vendor/aos/aos.js" defer></script>
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/trivision-hero.js" defer></script>
     <script src="assets/js/contact.js" defer></script>
 </head>
 
@@ -64,36 +66,64 @@
 
     <main class="contact-main" id="main-content">
         <article class="contact-page">
-            <section class="contact-hero" aria-labelledby="contact-hero-title">
-                <img class="contact-hero__image" src="assets/images/contact/contact-hero.webp"
-                    alt="Welcoming Charlotte-area residential property with a clear front entrance" width="1920"
-                    height="1080" fetchpriority="high">
+            <section class="trivision-hero" aria-labelledby="contact-hero-title" data-trivision-hero
+                data-trivision-hero-key="contactPage">
+                <div class="trivision-hero__stage" data-trivision-stage aria-hidden="true">
+                    <img class="trivision-hero__fallback" data-trivision-fallback
+                        src="assets/images/contact/contact-hero-a.svg" alt="" width="1920" height="1080"
+                        fetchpriority="high">
 
-                <div class="contact-hero__overlay" aria-hidden="true"></div>
+                    <div class="trivision-hero__slats" data-trivision-slats></div>
+                </div>
 
-                <div class="site-container-wide contact-hero__inner">
-                    <div class="contact-hero__content">
-                        <span class="site-eyebrow contact-hero__eyebrow" data-site-text="contactPage.hero.eyebrow">
+                <div class="trivision-hero__overlay" aria-hidden="true"></div>
+
+                <div class="trivision-hero__content-wrap">
+                    <div class="trivision-hero__content" data-trivision-content>
+                        <span class="site-eyebrow trivision-hero__eyebrow" data-trivision-eyebrow>
                             Start with the property details
                         </span>
 
-                        <h1 class="contact-hero__title" id="contact-hero-title" data-site-text="contactPage.hero.title">
+                        <h1 class="trivision-hero__title" id="contact-hero-title" data-trivision-title>
                             Request a Property Review
                         </h1>
 
-                        <p class="contact-hero__text" data-site-text="contactPage.hero.text">
+                        <p class="trivision-hero__text" data-trivision-text>
                             Tell us about the house, its current condition, occupancy, and
                             your preferred timeline. The request is non-binding and does not
                             guarantee an offer.
                         </p>
 
-                        <a class="site-button site-button--sky" href="#property-offer-form">
-                            <i data-lucide="clipboard-check" aria-hidden="true"></i>
+                        <div class="trivision-hero__actions">
+                            <a class="site-button site-button--sky" href="#property-offer-form" data-trivision-primary>
+                                <i data-lucide="clipboard-check" aria-hidden="true"></i>
 
-                            Complete the Property Form
-                        </a>
+                                <span data-trivision-primary-label>
+                                    Complete the Property Form
+                                </span>
+                            </a>
+
+                            <a class="site-button site-button--outline" href="how-it-works.html"
+                                data-trivision-secondary>
+                                <i data-lucide="search-check" aria-hidden="true"></i>
+
+                                <span data-trivision-secondary-label>
+                                    See How It Works
+                                </span>
+                            </a>
+                        </div>
                     </div>
+                </div>
 
+                <div class="trivision-hero__dots" data-trivision-dots aria-label="Choose a hero slide">
+                    <button class="trivision-hero__dot is-active" type="button" data-trivision-dot="0"
+                        aria-label="Show slide 1" aria-current="true"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="1"
+                        aria-label="Show slide 2"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="2"
+                        aria-label="Show slide 3"></button>
                 </div>
             </section>
 

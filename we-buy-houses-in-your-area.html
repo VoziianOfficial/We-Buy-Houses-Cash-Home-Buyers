@@ -41,11 +41,12 @@
 
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 
-    <link rel="preload" href="assets/images/services/areas-hero-a.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/services/areas-hero-a.svg" as="image" type="image/svg+xml">
 
     <link rel="stylesheet" href="assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/trivision-hero.css">
     <link rel="stylesheet" href="assets/css/services.css">
 
     <script src="config/config.js"></script>
@@ -53,6 +54,7 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/trivision-hero.js" defer></script>
     <script src="assets/js/services.js" defer></script>
 </head>
 
@@ -68,86 +70,64 @@
     <main class="service-main" id="main-content">
         <article class="service-page service-page--stacked-process" data-service-page
             data-service-slug="we-buy-houses-in-your-area">
-            <section class="service-hero" aria-labelledby="service-hero-title" data-service-hero>
-                <div class="service-hero__swiper swiper" data-service-hero-slider
-                    aria-label="Charlotte-area residential neighborhoods">
-                    <div class="swiper-wrapper">
-                        <div class="service-hero__slide swiper-slide" data-service-hero-slide>
-                            <img class="service-hero__slide-image" src="assets/images/services/areas-hero-a.webp"
-                                alt="Residential neighborhood in the Charlotte area" width="1920" height="1080"
-                                fetchpriority="high" data-service-hero-image data-image-index="0">
-                        </div>
+            <section class="trivision-hero" aria-labelledby="service-hero-title" data-trivision-hero
+                data-trivision-hero-key="service">
+                <div class="trivision-hero__stage" data-trivision-stage aria-hidden="true">
+                    <img class="trivision-hero__fallback" data-trivision-fallback
+                        src="assets/images/services/areas-hero-a.svg" alt="" width="1920" height="1080"
+                        fetchpriority="high">
 
-                        <div class="service-hero__slide swiper-slide" data-service-hero-slide>
-                            <img class="service-hero__slide-image" src="assets/images/services/areas-hero-b.webp" alt=""
-                                width="1920" height="1080" loading="lazy" data-service-hero-image data-image-index="1">
-                        </div>
-
-                        <div class="service-hero__slide swiper-slide" data-service-hero-slide>
-                            <img class="service-hero__slide-image" src="assets/images/services/areas-hero-c.webp" alt=""
-                                width="1920" height="1080" loading="lazy" data-service-hero-image data-image-index="2">
-                        </div>
-                    </div>
-
-                    <div class="service-hero__pagination swiper-pagination" data-service-hero-pagination></div>
+                    <div class="trivision-hero__slats" data-trivision-slats></div>
                 </div>
 
-                <div class="service-hero__content-wrap">
-                    <div class="site-container-wide">
-                        <div class="service-hero__content">
-                            <span class="site-eyebrow service-hero__eyebrow" data-service-hero-eyebrow>
-                                Charlotte-area property reviews
-                            </span>
+                <div class="trivision-hero__overlay" aria-hidden="true"></div>
 
-                            <h1 class="service-hero__title" id="service-hero-title" data-service-hero-title>
-                                We Buy Houses in Your Area
-                            </h1>
+                <div class="trivision-hero__content-wrap">
+                    <div class="trivision-hero__content" data-trivision-content>
+                        <span class="site-eyebrow trivision-hero__eyebrow" data-trivision-eyebrow>
+                            Charlotte-area property reviews
+                        </span>
 
-                            <p class="service-hero__text" data-service-hero-text>
-                                Explore the communities where property submissions may be
-                                considered and tell us where the house is located.
-                            </p>
+                        <h1 class="trivision-hero__title" id="service-hero-title" data-trivision-title>
+                            We Buy Houses in Your Area
+                        </h1>
 
-                            <div class="service-hero__actions">
-                                <a class="site-button site-button--sky" href="contact.html#property-offer-form"
-                                    data-service-primary-cta>
-                                    <i data-lucide="map-pin" aria-hidden="true"></i>
+                        <p class="trivision-hero__text" data-trivision-text>
+                            Explore the communities where property submissions may be
+                            considered and tell us where the house is located.
+                        </p>
 
-                                    <span data-service-primary-cta-label>
-                                        Request an Offer
-                                    </span>
-                                </a>
+                        <div class="trivision-hero__actions">
+                            <a class="site-button site-button--sky" href="contact.html#property-offer-form"
+                                data-trivision-primary>
+                                <i data-lucide="map-pin" aria-hidden="true"></i>
 
-                                <a class="site-button site-button--outline" href="#service-area-list">
-                                    <i data-lucide="map" aria-hidden="true"></i>
-
-                                    View Service Areas
-                                </a>
-                            </div>
-
-                            <div class="service-hero__meta" aria-label="Charlotte-area property review information">
-                                <span class="service-hero__meta-item">
-                                    <i data-lucide="house" aria-hidden="true"></i>
-
-                                    Residential property reviews
+                                <span data-trivision-primary-label>
+                                    Check Your Area
                                 </span>
+                            </a>
 
-                                <span class="service-hero__meta-item">
-                                    <i data-lucide="wrench" aria-hidden="true"></i>
+                            <a class="site-button site-button--outline" href="how-it-works.html"
+                                data-trivision-secondary>
+                                <i data-lucide="map" aria-hidden="true"></i>
 
-                                    Houses can be submitted as-is
+                                <span data-trivision-secondary-label>
+                                    See How It Works
                                 </span>
-
-                                <span class="service-hero__meta-item">
-                                    <i data-lucide="map-pin" aria-hidden="true"></i>
-
-                                    <span data-service-primary-market>
-                                        Charlotte, NC
-                                    </span>
-                                </span>
-                            </div>
+                            </a>
                         </div>
                     </div>
+                </div>
+
+                <div class="trivision-hero__dots" data-trivision-dots aria-label="Choose a hero slide">
+                    <button class="trivision-hero__dot is-active" type="button" data-trivision-dot="0"
+                        aria-label="Show slide 1" aria-current="true"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="1"
+                        aria-label="Show slide 2"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="2"
+                        aria-label="Show slide 3"></button>
                 </div>
             </section>
 

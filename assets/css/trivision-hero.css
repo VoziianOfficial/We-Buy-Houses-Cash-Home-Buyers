@@ -1,0 +1,223 @@
+/*
+  Trivision Billboard hero: 3D trivision billboard hero slider with rotating
+  vertical triangular slats. One universal component reused across hero
+  sections. All selectors are namespaced under .trivision-hero.
+*/
+
+.trivision-hero {
+    --trivision-slat-count: 18;
+    --trivision-duration: 1150ms;
+    --trivision-stagger: 16ms;
+    --trivision-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --trivision-perspective: 2200px;
+
+    position: relative;
+    display: block;
+    min-height: clamp(600px, 100svh, 1400px);
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--color-charcoal);
+    color: var(--color-white);
+}
+
+@media (max-width: 1023px) {
+    .trivision-hero {
+        --trivision-slat-count: 14;
+    }
+}
+
+@media (max-width: 767px) {
+    .trivision-hero {
+        --trivision-slat-count: 9;
+        --trivision-perspective: 1400px;
+    }
+}
+
+.trivision-hero__stage {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    perspective: var(--trivision-perspective);
+    perspective-origin: 50% 50%;
+    pointer-events: none;
+}
+
+.trivision-hero__fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.trivision-hero__slats {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.trivision-hero__slat {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform var(--trivision-duration) var(--trivision-ease);
+}
+
+.trivision-hero__face {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+}
+
+.trivision-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(7, 10, 13, 0.5);
+    pointer-events: none;
+}
+
+.trivision-hero__content-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--header-total-height) + clamp(24px, 5vh, 60px)) var(--page-gutter) clamp(64px, 9vh, 108px);
+}
+
+.trivision-hero__content {
+    display: grid;
+    max-width: 900px;
+    justify-items: center;
+    gap: 22px;
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 380ms ease,
+        transform 380ms ease;
+}
+
+.trivision-hero__content.is-hidden {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.trivision-hero__eyebrow {
+    justify-content: center;
+    color: var(--color-sky-light);
+}
+
+.trivision-hero__title {
+    max-width: 18ch;
+    margin: 0;
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: clamp(2.6rem, 1.9rem + 3.1vw, 5.6rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 0.98;
+    text-wrap: balance;
+}
+
+.trivision-hero__text {
+    max-width: 640px;
+    margin: 0;
+    color: rgba(247, 248, 246, 0.84);
+    font-size: clamp(1rem, 0.92rem + 0.3vw, 1.22rem);
+    line-height: 1.7;
+}
+
+.trivision-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.trivision-hero__dots {
+    position: absolute;
+    bottom: clamp(22px, 4vh, 44px);
+    left: 50%;
+    z-index: 6;
+    display: flex;
+    gap: 10px;
+    transform: translateX(-50%);
+}
+
+.trivision-hero__dot {
+    width: 22px;
+    height: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: rgba(247, 248, 246, 0.4);
+    transition:
+        width var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+.trivision-hero__dot:hover {
+    background: rgba(247, 248, 246, 0.68);
+}
+
+.trivision-hero__dot.is-active {
+    width: 40px;
+    background: var(--color-sky);
+}
+
+@media (max-width: 767px) {
+    .trivision-hero__content {
+        gap: 18px;
+    }
+
+    .trivision-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .trivision-hero__actions .site-button {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trivision-hero__slats {
+        display: none;
+    }
+
+    .trivision-hero__fallback {
+        transition: opacity 900ms ease;
+    }
+
+    .trivision-hero__content {
+        transition:
+            opacity 260ms ease,
+            transform 260ms ease;
+    }
+
+    .trivision-hero__content.is-hidden {
+        transform: translateY(6px);
+    }
+}

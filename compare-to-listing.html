@@ -42,11 +42,12 @@
 
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
 
-    <link rel="preload" href="assets/images/services/compare-hero.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/services/compare-hero-a.svg" as="image" type="image/svg+xml">
 
     <link rel="stylesheet" href="assets/vendor/aos/aos.css">
     <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/trivision-hero.css">
     <link rel="stylesheet" href="assets/css/services.css">
 
     <script src="config/config.js"></script>
@@ -54,6 +55,7 @@
     <script src="assets/vendor/swiper/swiper-bundle.min.js" defer></script>
     <script src="assets/vendor/lucide/lucide.min.js" defer></script>
     <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/trivision-hero.js" defer></script>
     <script src="assets/js/services.js" defer></script>
 </head>
 
@@ -68,36 +70,63 @@
 
     <main class="service-main" id="main-content">
         <article class="service-page">
-            <section class="service-information-hero" aria-labelledby="compare-hero-title">
-                <div class="site-container-wide">
-                    <div class="service-information-hero__content">
-                        <span class="site-eyebrow" data-page-hero-eyebrow>
+            <section class="trivision-hero" aria-labelledby="compare-hero-title" data-trivision-hero
+                data-trivision-hero-key="comparePage">
+                <div class="trivision-hero__stage" data-trivision-stage aria-hidden="true">
+                    <img class="trivision-hero__fallback" data-trivision-fallback
+                        src="assets/images/services/compare-hero-a.svg" alt="" width="1920" height="1080"
+                        fetchpriority="high">
+
+                    <div class="trivision-hero__slats" data-trivision-slats></div>
+                </div>
+
+                <div class="trivision-hero__overlay" aria-hidden="true"></div>
+
+                <div class="trivision-hero__content-wrap">
+                    <div class="trivision-hero__content" data-trivision-content>
+                        <span class="site-eyebrow trivision-hero__eyebrow" data-trivision-eyebrow>
                             Compare the selling routes
                         </span>
 
-                        <h1 class="service-information-hero__title" id="compare-hero-title" data-page-hero-title>
+                        <h1 class="trivision-hero__title" id="compare-hero-title" data-trivision-title>
                             Direct Sale or Traditional Listing?
                         </h1>
 
-                        <p class="service-information-hero__text" data-page-hero-text>
+                        <p class="trivision-hero__text" data-trivision-text>
                             Review the differences before deciding which approach better
                             fits the property, your priorities, and your available timeline.
                         </p>
 
-                        <div class="service-hero__actions">
-                            <a class="site-button site-button--sky" href="#full-comparison">
+                        <div class="trivision-hero__actions">
+                            <a class="site-button site-button--sky" href="#full-comparison" data-trivision-primary>
                                 <i data-lucide="columns-2" aria-hidden="true"></i>
 
-                                Compare the Options
+                                <span data-trivision-primary-label>
+                                    Compare the Options
+                                </span>
                             </a>
 
-                            <a class="site-button site-button--outline" href="contact.html#property-offer-form">
+                            <a class="site-button site-button--outline" href="contact.html#property-offer-form"
+                                data-trivision-secondary>
                                 <i data-lucide="clipboard-check" aria-hidden="true"></i>
 
-                                Request a Property Review
+                                <span data-trivision-secondary-label>
+                                    Request a Property Review
+                                </span>
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <div class="trivision-hero__dots" data-trivision-dots aria-label="Choose a hero slide">
+                    <button class="trivision-hero__dot is-active" type="button" data-trivision-dot="0"
+                        aria-label="Show slide 1" aria-current="true"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="1"
+                        aria-label="Show slide 2"></button>
+
+                    <button class="trivision-hero__dot" type="button" data-trivision-dot="2"
+                        aria-label="Show slide 3"></button>
                 </div>
             </section>
 

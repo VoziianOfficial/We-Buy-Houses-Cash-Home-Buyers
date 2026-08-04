@@ -157,14 +157,49 @@ window.SITE_CONFIG = Object.freeze({
 
             "metaDescription": "Request an individual cash-offer review for a Charlotte-area house based on its location, condition, occupancy, title information, and seller timeline.",
 
-            "heroEyebrow": "Tailored property review",
-            "heroTitle": "Request a Cash Offer",
-            "heroText": "Tell us about the property and explore whether a direct cash-sale option may fit your circumstances.",
-
-            "heroImages": [
-                "assets/images/services/cash-offer-hero-a.webp",
-                "assets/images/services/cash-offer-hero-b.webp",
-                "assets/images/services/cash-offer-hero-c.webp"
+            "heroSlides": [
+                {
+                    "image": "assets/images/services/cash-offer-hero-a.svg",
+                    "eyebrow": "Tailored property review",
+                    "title": "Request a Cash Offer",
+                    "text": "Tell us about the property and explore whether a direct cash-sale option may fit your circumstances.",
+                    "primaryButton": {
+                        "label": "Request an Offer",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "See How It Works",
+                        "href": "how-it-works.html"
+                    }
+                },
+                {
+                    "image": "assets/images/services/cash-offer-hero-b.svg",
+                    "eyebrow": "Based on your details",
+                    "title": "A Review Built Around the Property",
+                    "text": "Location, condition, occupancy, and title details all factor into whether a written offer can be presented.",
+                    "primaryButton": {
+                        "label": "Start Your Review",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Compare to Listing",
+                        "href": "compare-to-listing.html"
+                    }
+                },
+                {
+                    "image": "assets/images/services/cash-offer-hero-c.svg",
+                    "eyebrow": "No obligation to accept",
+                    "title": "Consider the Terms on Your Time",
+                    "text": "Submitting details does not obligate you to sell. Review any available terms before deciding how to proceed.",
+                    "primaryButton": {
+                        "label": "Get a Cash Offer",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Read FAQs",
+                        "href": "frequently-asked-questions.html"
+                    }
+                }
             ]
         },
 
@@ -181,14 +216,49 @@ window.SITE_CONFIG = Object.freeze({
 
             "metaDescription": "Explore an as-is sale for a Charlotte-area house without completing repairs, renovations, staging, or extensive cleaning before requesting a review.",
 
-            "heroEyebrow": "Sell in the current condition",
-            "heroTitle": "Sell Your House As-Is",
-            "heroText": "Describe the property as it exists today and explore whether a direct as-is sale may be available.",
-
-            "heroImages": [
-                "assets/images/services/sell-as-is-hero-a.webp",
-                "assets/images/services/sell-as-is-hero-b.webp",
-                "assets/images/services/sell-as-is-hero-c.webp"
+            "heroSlides": [
+                {
+                    "image": "assets/images/services/sell-as-is-hero-a.svg",
+                    "eyebrow": "Sell in the current condition",
+                    "title": "Sell Your House As-Is",
+                    "text": "Describe the property as it exists today and explore whether a direct as-is sale may be available.",
+                    "primaryButton": {
+                        "label": "Request an Offer",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Understand As-Is Selling",
+                        "href": "#as-is-overview"
+                    }
+                },
+                {
+                    "image": "assets/images/services/sell-as-is-hero-b.svg",
+                    "eyebrow": "No staging required",
+                    "title": "Skip Repairs and Renovations",
+                    "text": "Known repair needs and deferred maintenance can be disclosed honestly instead of fixed before submission.",
+                    "primaryButton": {
+                        "label": "Share Property Details",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "See How It Works",
+                        "href": "how-it-works.html"
+                    }
+                },
+                {
+                    "image": "assets/images/services/sell-as-is-hero-c.svg",
+                    "eyebrow": "A more direct path",
+                    "title": "Move at a Pace That Fits You",
+                    "text": "Discuss a flexible closing timeline once written terms are available, without a public listing in between.",
+                    "primaryButton": {
+                        "label": "Request an Offer",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Compare to Listing",
+                        "href": "compare-to-listing.html"
+                    }
+                }
             ]
         },
 
@@ -205,14 +275,49 @@ window.SITE_CONFIG = Object.freeze({
 
             "metaDescription": "Explore the Charlotte-area communities where Velmora Home Offers may review residential properties for a potential direct purchase.",
 
-            "heroEyebrow": "Charlotte-area property reviews",
-            "heroTitle": "We Buy Houses in Your Area",
-            "heroText": "Explore the communities where property submissions may be considered and tell us where the house is located.",
-
-            "heroImages": [
-                "assets/images/services/areas-hero-a.webp",
-                "assets/images/services/areas-hero-b.webp",
-                "assets/images/services/areas-hero-c.webp"
+            "heroSlides": [
+                {
+                    "image": "assets/images/services/areas-hero-a.svg",
+                    "eyebrow": "Charlotte-area property reviews",
+                    "title": "We Buy Houses in Your Area",
+                    "text": "Explore the communities where property submissions may be considered and tell us where the house is located.",
+                    "primaryButton": {
+                        "label": "Check Your Area",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "See How It Works",
+                        "href": "how-it-works.html"
+                    }
+                },
+                {
+                    "image": "assets/images/services/areas-hero-b.svg",
+                    "eyebrow": "Charlotte and beyond",
+                    "title": "Local Reviews, Wider Reach",
+                    "text": "From Matthews to Concord, Gastonia to Fort Mill, requests are reviewed individually across the greater Charlotte area.",
+                    "primaryButton": {
+                        "label": "Request a Cash Offer",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Sell As-Is",
+                        "href": "sell-house-as-is.html"
+                    }
+                },
+                {
+                    "image": "assets/images/services/areas-hero-c.svg",
+                    "eyebrow": "Every neighborhood, every story",
+                    "title": "Different Streets. Same Direct Process.",
+                    "text": "Whatever the neighborhood or property type, the same individual review process applies from first message to closing.",
+                    "primaryButton": {
+                        "label": "Start Your Review",
+                        "href": "contact.html#property-offer-form"
+                    },
+                    "secondaryButton": {
+                        "label": "Read FAQs",
+                        "href": "frequently-asked-questions.html"
+                    }
+                }
             ]
         }
     ],
@@ -245,21 +350,50 @@ window.SITE_CONFIG = Object.freeze({
     },
 
     "home": {
-        "hero": {
-            "eyebrow": "Charlotte-Area Cash Home Buyers",
-            "title": "A Clearer Way to Sell Your House",
-            "text": "Share the property details, explore a tailored direct-sale option, and choose whether the process fits your plans.",
-
-            "primaryCta": {
-                "label": "Request a Cash Offer",
-                "href": "contact.html#property-offer-form"
+        "heroSlides": [
+            {
+                "image": "assets/images/home/home-hero-a.svg",
+                "eyebrow": "Charlotte-Area Cash Home Buyers",
+                "title": "A Clearer Way to Sell Your House",
+                "text": "Share the property details, explore a tailored direct-sale option, and choose whether the process fits your plans.",
+                "primaryButton": {
+                    "label": "Request a Cash Offer",
+                    "href": "contact.html#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "See How It Works",
+                    "href": "how-it-works.html"
+                }
             },
-
-            "secondaryCta": {
-                "label": "See How It Works",
-                "href": "how-it-works.html"
+            {
+                "image": "assets/images/home/home-hero-b.svg",
+                "eyebrow": "No Repairs. No Showings.",
+                "title": "Sell Your House As-Is",
+                "text": "Describe the property honestly, skip the staging and repairs, and explore whether a direct sale fits its current condition.",
+                "primaryButton": {
+                    "label": "Sell As-Is",
+                    "href": "sell-house-as-is.html"
+                },
+                "secondaryButton": {
+                    "label": "Compare to Listing",
+                    "href": "compare-to-listing.html"
+                }
+            },
+            {
+                "image": "assets/images/home/home-hero-c.svg",
+                "eyebrow": "Charlotte & Surrounding Communities",
+                "title": "A Timeline Built Around You",
+                "text": "From Charlotte to Matthews, Concord, and beyond, discuss a closing timeline that works for your circumstances.",
+                "primaryButton": {
+                    "label": "View Service Areas",
+                    "href": "we-buy-houses-in-your-area.html"
+                },
+                "secondaryButton": {
+                    "label": "Read FAQs",
+                    "href": "frequently-asked-questions.html"
+                }
             }
-        },
+        ],
 
         "benefits": {
             "displayWord": "AS-IS",
@@ -465,9 +599,50 @@ window.SITE_CONFIG = Object.freeze({
         "metaTitle": "How It Works | Velmora Home Offers",
         "metaDescription": "Learn how the Velmora Home Offers property-review process works, from submitting the house details to reviewing written terms and coordinating closing.",
 
-        "heroEyebrow": "The direct-sale process",
-        "heroTitle": "How It Works",
-        "heroText": "Understand each stage before sharing the property details or deciding whether a direct sale fits your plans.",
+        "heroSlides": [
+            {
+                "image": "assets/images/services/how-it-works-hero-a.svg",
+                "eyebrow": "The direct-sale process",
+                "title": "How It Works",
+                "text": "Understand each stage before sharing the property details or deciding whether a direct sale fits your plans.",
+                "primaryButton": {
+                    "label": "Request a Property Review",
+                    "href": "contact.html#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "Review the Stages",
+                    "href": "#process-overview"
+                }
+            },
+            {
+                "image": "assets/images/services/how-it-works-hero-b.svg",
+                "eyebrow": "Step by step",
+                "title": "From First Message to Closing",
+                "text": "Five clear stages guide the review, from sharing property details to coordinating title work and closing.",
+                "primaryButton": {
+                    "label": "See the Full Process",
+                    "href": "#process-overview"
+                },
+                "secondaryButton": {
+                    "label": "Read FAQs",
+                    "href": "frequently-asked-questions.html"
+                }
+            },
+            {
+                "image": "assets/images/services/how-it-works-hero-c.svg",
+                "eyebrow": "No obligation at any step",
+                "title": "Decide at Your Own Pace",
+                "text": "Submitting property details does not require you to accept an offer or continue with a sale.",
+                "primaryButton": {
+                    "label": "Request a Property Review",
+                    "href": "contact.html#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "Compare to Listing",
+                    "href": "compare-to-listing.html"
+                }
+            }
+        ],
 
         "steps": [
             {
@@ -503,9 +678,50 @@ window.SITE_CONFIG = Object.freeze({
 
         "metaDescription": "Compare a direct cash sale with a traditional property listing, including preparation, showings, commissions, financing, timing, and transaction uncertainty.",
 
-        "heroEyebrow": "Compare the selling routes",
-        "heroTitle": "Direct Sale or Traditional Listing?",
-        "heroText": "Review the differences before deciding which approach better fits the property, your priorities, and your available timeline."
+        "heroSlides": [
+            {
+                "image": "assets/images/services/compare-hero-a.svg",
+                "eyebrow": "Compare the selling routes",
+                "title": "Direct Sale or Traditional Listing?",
+                "text": "Review the differences before deciding which approach better fits the property, your priorities, and your available timeline.",
+                "primaryButton": {
+                    "label": "Compare the Options",
+                    "href": "#full-comparison"
+                },
+                "secondaryButton": {
+                    "label": "Request a Property Review",
+                    "href": "contact.html#property-offer-form"
+                }
+            },
+            {
+                "image": "assets/images/services/compare-hero-b.svg",
+                "eyebrow": "Preparation & showings",
+                "title": "Skip the Listing Prep",
+                "text": "A direct sale can skip repairs, staging, and a public showing schedule that a traditional listing typically involves.",
+                "primaryButton": {
+                    "label": "See the Comparison",
+                    "href": "#full-comparison"
+                },
+                "secondaryButton": {
+                    "label": "Sell As-Is",
+                    "href": "sell-house-as-is.html"
+                }
+            },
+            {
+                "image": "assets/images/services/compare-hero-c.svg",
+                "eyebrow": "Timeline & certainty",
+                "title": "Weigh Timing Against Certainty",
+                "text": "Consider how financing, showings, and marketing timelines compare to a more direct review process.",
+                "primaryButton": {
+                    "label": "Request a Property Review",
+                    "href": "contact.html#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "How It Works",
+                    "href": "how-it-works.html"
+                }
+            }
+        ]
     },
 
     "faqPage": {
@@ -513,19 +729,97 @@ window.SITE_CONFIG = Object.freeze({
 
         "metaDescription": "Read answers about cash offers, as-is property sales, commissions, repairs, closing timelines, service areas, and property submissions.",
 
-        "heroEyebrow": "Seller questions",
-        "heroTitle": "Frequently Asked Questions",
-        "heroText": "Understand what the direct property-review process includes, what it does not guarantee, and what information helps the team review a request."
+        "heroSlides": [
+            {
+                "image": "assets/images/services/faq-hero-a.svg",
+                "eyebrow": "Seller questions",
+                "title": "Frequently Asked Questions",
+                "text": "Understand what the direct property-review process includes, what it does not guarantee, and what information helps the team review a request.",
+                "primaryButton": {
+                    "label": "Read the Questions",
+                    "href": "#all-questions"
+                },
+                "secondaryButton": {
+                    "label": "Submit Property Details",
+                    "href": "contact.html#property-offer-form"
+                }
+            },
+            {
+                "image": "assets/images/services/faq-hero-b.svg",
+                "eyebrow": "Offers & commissions",
+                "title": "What a Review Can (and Can't) Guarantee",
+                "text": "Submitting property information does not guarantee an offer and does not obligate you to sell.",
+                "primaryButton": {
+                    "label": "See the Answers",
+                    "href": "#all-questions"
+                },
+                "secondaryButton": {
+                    "label": "Get a Cash Offer",
+                    "href": "get-a-cash-offer.html"
+                }
+            },
+            {
+                "image": "assets/images/services/faq-hero-c.svg",
+                "eyebrow": "Still have questions?",
+                "title": "Ask About Your Specific Property",
+                "text": "Every property is reviewed individually, so reach out directly if your situation isn't covered here.",
+                "primaryButton": {
+                    "label": "Submit Property Details",
+                    "href": "contact.html#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "We Buy Houses in Your Area",
+                    "href": "we-buy-houses-in-your-area.html"
+                }
+            }
+        ]
     },
 
     "contactPage": {
-        "heroLabel": "Partnerships and property requests",
-        "heroTitle": "Advertise & Collaborate",
-
-        "heroText": "We are open to thoughtful partnerships, professional collaborations, and property-related requests. Use the form to share the property details or explain the purpose of your inquiry. Every request is reviewed individually, and the team responds by email when additional information or a next step is available.",
-
-        "heroActionLabel": "Go to the property form",
-        "heroActionIcon": "clipboard-check",
+        "heroSlides": [
+            {
+                "image": "assets/images/contact/contact-hero-a.svg",
+                "eyebrow": "Start with the property details",
+                "title": "Request a Property Review",
+                "text": "Tell us about the house, its current condition, occupancy, and your preferred timeline. The request is non-binding and does not guarantee an offer.",
+                "primaryButton": {
+                    "label": "Complete the Property Form",
+                    "href": "#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "See How It Works",
+                    "href": "how-it-works.html"
+                }
+            },
+            {
+                "image": "assets/images/contact/contact-hero-b.svg",
+                "eyebrow": "Partnerships & collaborations",
+                "title": "Advertise & Collaborate",
+                "text": "We are open to thoughtful partnerships, professional collaborations, and property-related requests. Every inquiry is reviewed individually.",
+                "primaryButton": {
+                    "label": "Go to the Property Form",
+                    "href": "#property-offer-form"
+                },
+                "secondaryButton": {
+                    "label": "Email Us Directly",
+                    "href": "mailto:hello@velmorahomeoffers.com"
+                }
+            },
+            {
+                "image": "assets/images/contact/contact-hero-c.svg",
+                "eyebrow": "Prefer to write directly?",
+                "title": "We Read Every Message",
+                "text": "Email the team directly, or use the form to share details about the property and your timeline.",
+                "primaryButton": {
+                    "label": "Email the Team",
+                    "href": "mailto:hello@velmorahomeoffers.com"
+                },
+                "secondaryButton": {
+                    "label": "Complete the Property Form",
+                    "href": "#property-offer-form"
+                }
+            }
+        ],
 
         "formEyebrow": "Property request",
         "formTitle": "Tell Us About the Property",
