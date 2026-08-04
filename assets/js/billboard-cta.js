@@ -7,7 +7,7 @@
   Markup contract (see index.html / service pages for real usage):
 
     <div class="billboard-cta billboard-cta--sky" data-billboard-cta
-         data-billboard-image="assets/images/..."
+         data-billboard-image="images/..."
          data-text-duration="5500" data-photo-duration="4500"
          data-slat-direction="forward">
       <div class="billboard-cta__card">
