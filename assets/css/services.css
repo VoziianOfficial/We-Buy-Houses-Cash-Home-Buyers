@@ -823,14 +823,14 @@
    ========================================================================== */
 
 .service-explore {
-    padding: clamp(48px, 6vw, 84px) 0;
+    padding: clamp(40px, 4.6vw, 64px) 0;
     background: var(--color-white, #f7f8f6);
 }
 
 .service-explore__grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: clamp(12px, 2vw, 28px);
+    gap: clamp(10px, 1.6vw, 24px);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -858,19 +858,25 @@
 .service-explore__circle {
     display: block;
     position: relative;
-    width: clamp(120px, 11vw, 210px);
-    height: clamp(120px, 11vw, 210px);
+    width: clamp(100px, 9.4vw, 176px);
+    height: clamp(100px, 9.4vw, 176px);
     overflow: hidden;
+    border: 1.5px solid rgba(7, 16, 23, 0.12);
     border-radius: 50%;
     background: var(--color-warm-white, #ecefee);
+    box-shadow: 0 10px 22px rgba(7, 16, 23, 0.05);
     transition:
+        border-color 320ms ease,
         box-shadow 320ms ease,
         transform 320ms ease;
 }
 
 .service-explore__link:hover .service-explore__circle,
 .service-explore__link:focus-visible .service-explore__circle {
-    box-shadow: 0 24px 60px rgba(7, 16, 23, 0.24);
+    border-color: var(--color-sky, #58c7ff);
+    box-shadow:
+        0 0 0 6px rgba(88, 199, 255, 0.14),
+        0 22px 46px rgba(7, 16, 23, 0.16);
     transform: translateY(-4px);
 }
 
@@ -885,9 +891,9 @@
 }
 
 .service-explore__icon svg {
-    width: 32%;
-    height: 32%;
-    stroke-width: 1.4;
+    width: 30%;
+    height: 30%;
+    stroke-width: 1.6;
 }
 
 .service-explore__photo {
@@ -912,14 +918,15 @@
 
 .service-explore__tag {
     position: absolute;
-    right: -8px;
-    bottom: 16%;
-    padding: 7px 16px;
+    right: -6px;
+    bottom: 14%;
+    padding: 6px 14px;
+    border: 1px solid rgba(247, 248, 246, 0.28);
     border-radius: var(--radius-pill, 999px);
     background: var(--color-ink, #071017);
     color: var(--color-white, #f7f8f6);
     font-family: var(--font-display);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 600;
     letter-spacing: 0.07em;
     white-space: nowrap;
@@ -937,10 +944,10 @@
 }
 
 .service-explore__label {
-    margin-top: 22px;
+    margin-top: 16px;
     color: var(--color-ink, #071017);
     font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: -0.01em;
     transition: color 220ms ease;
@@ -952,10 +959,10 @@
 }
 
 .service-explore__count {
-    margin-top: 4px;
+    margin-top: 3px;
     color: #116c98;
     font-family: var(--font-display);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -964,7 +971,7 @@
 @media (max-width: 900px) {
     .service-explore__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        row-gap: clamp(28px, 4vw, 40px);
+        row-gap: clamp(22px, 3.4vw, 32px);
     }
 }
 
