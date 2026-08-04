@@ -380,7 +380,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "assets/images/home-hero-c.jpg",
+                "image": "assets/images/contact-hero-c.jpg",
                 "eyebrow": "Charlotte & Surrounding Communities",
                 "title": "A Timeline Built Around You",
                 "text": "From Charlotte to Matthews, Concord, and beyond, discuss a closing timeline that works for your circumstances.",
