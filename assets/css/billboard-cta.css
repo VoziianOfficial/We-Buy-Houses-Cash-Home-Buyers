@@ -134,14 +134,16 @@
 .billboard-cta__content {
     position: relative;
     z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(108px, 0.55fr) minmax(240px, 1.1fr) minmax(260px, 1fr) auto;
+    align-items: center;
     justify-content: center;
+    gap: clamp(18px, 2.4vw, 34px);
     height: 100%;
-    max-width: 58%;
+    width: 100%;
+    max-width: none;
     min-width: 0;
-    padding: clamp(20px, 3vw, 40px) clamp(24px, 4vw, 52px);
+    padding: clamp(24px, 3.2vw, 46px) clamp(28px, 4.5vw, 64px);
     text-align: left;
     opacity: 1;
     transform: translateY(0);
@@ -156,45 +158,47 @@
 }
 
 .billboard-cta--content-right .billboard-cta__content {
-    margin-left: auto;
-    align-items: flex-end;
-    text-align: right;
+    margin-left: 0;
+    text-align: left;
 }
 
 .billboard-cta__eyebrow {
-    margin: 0 0 8px;
+    max-width: 14ch;
+    margin: 0;
     font-family: var(--font-body);
-    font-size: 0.72rem;
+    font-size: clamp(0.78rem, 0.72rem + 0.18vw, 0.9rem);
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    opacity: 0.72;
+    line-height: 1.25;
+    opacity: 0.82;
 }
 
 .billboard-cta__title {
     display: -webkit-box;
-    max-width: 20ch;
+    max-width: 18ch;
     margin: 0;
     overflow: hidden;
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 1.05rem + 1.9vw, 2.6rem);
+    font-size: clamp(1.9rem, 1.25rem + 2.1vw, 3.35rem);
     font-weight: 600;
-    line-height: 1.04;
-    letter-spacing: -0.03em;
+    line-height: 0.98;
+    letter-spacing: 0;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
 .billboard-cta__text {
     display: -webkit-box;
-    max-width: 42ch;
-    margin: 10px 0 0;
+    max-width: 38ch;
+    margin: 0;
     overflow: hidden;
     color: currentColor;
-    opacity: 0.78;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    -webkit-line-clamp: 2;
+    opacity: 0.84;
+    font-size: clamp(1rem, 0.94rem + 0.22vw, 1.16rem);
+    font-weight: 600;
+    line-height: 1.45;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
@@ -202,11 +206,11 @@
     display: flex;
     flex: 0 0 auto;
     gap: 12px;
-    margin-top: clamp(16px, 2.4vw, 26px);
+    margin-top: 0;
 }
 
 .billboard-cta--content-right .billboard-cta__actions {
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .billboard-cta__icon-button {
@@ -255,7 +259,37 @@
     }
 
     .billboard-cta__card {
-        height: 300px;
+        height: clamp(320px, 42vw, 380px);
+    }
+
+    .billboard-cta__content,
+    .billboard-cta--content-right .billboard-cta__content {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "eyebrow actions"
+            "title actions"
+            "text actions";
+        gap: 10px clamp(18px, 4vw, 34px);
+    }
+
+    .billboard-cta__eyebrow {
+        grid-area: eyebrow;
+        max-width: none;
+    }
+
+    .billboard-cta__title {
+        grid-area: title;
+        max-width: 18ch;
+    }
+
+    .billboard-cta__text {
+        grid-area: text;
+        max-width: 42ch;
+    }
+
+    .billboard-cta__actions {
+        grid-area: actions;
+        align-self: center;
     }
 }
 
@@ -270,11 +304,18 @@
 
     .billboard-cta__content,
     .billboard-cta--content-right .billboard-cta__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         max-width: 100%;
         align-items: center;
         margin-left: 0;
         padding: clamp(24px, 6vw, 34px);
         text-align: center;
+    }
+
+    .billboard-cta__eyebrow {
+        max-width: 22ch;
     }
 
     .billboard-cta__title,
@@ -283,10 +324,15 @@
         -webkit-line-clamp: 3;
     }
 
+    .billboard-cta__title {
+        font-size: clamp(2rem, 1.66rem + 1.2vw, 2.35rem);
+    }
+
     .billboard-cta__actions,
     .billboard-cta--content-right .billboard-cta__actions {
         justify-content: center;
         width: 100%;
+        margin-top: clamp(8px, 3vw, 16px);
     }
 }
 
