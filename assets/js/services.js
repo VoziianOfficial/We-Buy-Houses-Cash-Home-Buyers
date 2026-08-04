@@ -1078,6 +1078,130 @@
             });
     };
 
+    const photoGallerySliders = [];
+
+    const initializePhotoGallery = (
+        section
+    ) => {
+        if (
+            !section ||
+            section.dataset.photoGalleryInitialized ===
+            "true"
+        ) {
+            return;
+        }
+
+        const mainEl = section.querySelector(
+            "[data-photo-gallery-main]"
+        );
+
+        const thumbsEl = section.querySelector(
+            "[data-photo-gallery-thumbs]"
+        );
+
+        if (
+            !mainEl ||
+            !thumbsEl ||
+            typeof window.Swiper !== "function"
+        ) {
+            return;
+        }
+
+        const prevEl = section.querySelector(
+            "[data-photo-gallery-prev]"
+        );
+
+        const nextEl = section.querySelector(
+            "[data-photo-gallery-next]"
+        );
+
+        const thumbsSpeed = 420;
+        const mainSpeed = 620;
+
+        const thumbsSwiper = new window.Swiper(
+            thumbsEl,
+            {
+                slidesPerView: "auto",
+                spaceBetween: 10,
+                freeMode: true,
+                watchSlidesProgress: true,
+                speed: reducedMotionQuery.matches
+                    ? 0
+                    : thumbsSpeed,
+                breakpoints: {
+                    768: {
+                        direction: "vertical"
+                    }
+                },
+                a11y: {
+                    enabled: true,
+                    containerMessage:
+                        "Property photo thumbnails",
+                    slideLabelMessage:
+                        "Photo {{index}} of {{slidesLength}}"
+                }
+            }
+        );
+
+        const mainSwiper = new window.Swiper(
+            mainEl,
+            {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                speed: reducedMotionQuery.matches
+                    ? 0
+                    : mainSpeed,
+                grabCursor: true,
+                watchOverflow: true,
+                loop: false,
+                thumbs: {
+                    swiper: thumbsSwiper
+                },
+                navigation:
+                    prevEl && nextEl
+                        ? {
+                            prevEl,
+                            nextEl
+                        }
+                        : undefined,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                },
+                a11y: {
+                    enabled: true,
+                    prevSlideMessage:
+                        "Previous photo",
+                    nextSlideMessage:
+                        "Next photo"
+                }
+            }
+        );
+
+        thumbsSwiper.__defaultSpeed = thumbsSpeed;
+        mainSwiper.__defaultSpeed = mainSpeed;
+
+        section.dataset.photoGalleryInitialized =
+            "true";
+
+        section.photoGallerySwiper = mainSwiper;
+
+        photoGallerySliders.push(
+            mainSwiper,
+            thumbsSwiper
+        );
+    };
+
+    const initializePhotoGalleries = () => {
+        document
+            .querySelectorAll(
+                "[data-photo-gallery]"
+            )
+            .forEach((section) => {
+                initializePhotoGallery(section);
+            });
+    };
+
     const setAccordionState = (
         button,
         panel,
@@ -1506,6 +1630,10 @@
                 swiper.update();
             });
 
+            photoGallerySliders.forEach((swiper) => {
+                swiper.update();
+            });
+
             updateMotionEffects();
 
             resizeFrameRequested = false;
@@ -1527,6 +1655,15 @@
                 reducedMotionQuery.matches
                     ? 0
                     : 680;
+
+            swiper.update();
+        });
+
+        photoGallerySliders.forEach((swiper) => {
+            swiper.params.speed =
+                reducedMotionQuery.matches
+                    ? 0
+                    : swiper.__defaultSpeed;
 
             swiper.update();
         });
@@ -1604,6 +1741,7 @@
         initializeExpandableCards();
         initializeFlipCards();
         initializeCardsSliders();
+        initializePhotoGalleries();
         initializePropertyGallery();
         initializeAccordions();
 
