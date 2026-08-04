@@ -131,8 +131,8 @@
                 </div>
             </section>
 
-            <section class="site-section service-cards" aria-labelledby="process-situations-title"
-                data-service-cards-section>
+            <section class="site-section service-property-gallery" aria-labelledby="process-situations-title"
+                data-property-gallery>
                 <div class="site-container-wide">
                     <div class="site-section-header">
                         <div>
@@ -141,7 +141,7 @@
                             </span>
 
                             <h2 class="site-heading" id="process-situations-title">
-                                The process adapts to the information you provide.
+                                Different Homes.
                             </h2>
                         </div>
 
@@ -151,87 +151,339 @@
                         </p>
                     </div>
 
-                    <div class="service-cards__slider swiper" data-service-cards-slider>
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide" data-service-cards-slide>
-                                <article class="service-cards__card">
-                                    <i data-lucide="key-round" aria-hidden="true"></i>
+                    <div class="service-property-gallery__filters" role="group" aria-label="Filter property situations">
+                        <button class="service-property-gallery__filter is-active" type="button"
+                            data-property-filter="all" aria-pressed="true">
+                            All Properties
+                        </button>
 
-                                    <h3 class="service-cards__card-title">
-                                        Inherited property
-                                    </h3>
+                        <button class="service-property-gallery__filter" type="button" data-property-filter="repairs"
+                            aria-pressed="false">
+                            Repairs Needed
+                        </button>
 
-                                    <p class="service-cards__card-text">
-                                        Ownership documents, probate status, multiple heirs, and
-                                        property access may affect the review and closing path.
-                                    </p>
-                                </article>
-                            </div>
+                        <button class="service-property-gallery__filter" type="button"
+                            data-property-filter="inherited" aria-pressed="false">
+                            Inherited
+                        </button>
 
-                            <div class="swiper-slide" data-service-cards-slide>
-                                <article class="service-cards__card">
-                                    <i data-lucide="building" aria-hidden="true"></i>
+                        <button class="service-property-gallery__filter" type="button" data-property-filter="vacant"
+                            aria-pressed="false">
+                            Vacant
+                        </button>
 
-                                    <h3 class="service-cards__card-title">
-                                        Tenant-occupied house
-                                    </h3>
+                        <button class="service-property-gallery__filter" type="button"
+                            data-property-filter="occupied" aria-pressed="false">
+                            Occupied
+                        </button>
 
-                                    <p class="service-cards__card-text">
-                                        The current lease, access arrangements, possession
-                                        expectations, and tenant communication may need to be
-                                        understood.
-                                    </p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide" data-service-cards-slide>
-                                <article class="service-cards__card">
-                                    <i data-lucide="hammer" aria-hidden="true"></i>
-
-                                    <h3 class="service-cards__card-title">
-                                        Property needing repairs
-                                    </h3>
-
-                                    <p class="service-cards__card-text">
-                                        Known damage, unfinished work, outdated systems, and
-                                        deferred maintenance can be described before the review.
-                                    </p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide" data-service-cards-slide>
-                                <article class="service-cards__card">
-                                    <i data-lucide="house" aria-hidden="true"></i>
-
-                                    <h3 class="service-cards__card-title">
-                                        Vacant property
-                                    </h3>
-
-                                    <p class="service-cards__card-text">
-                                        Security, access, remaining belongings, utilities, and
-                                        deferred exterior care may require clarification.
-                                    </p>
-                                </article>
-                            </div>
-
-                            <div class="swiper-slide" data-service-cards-slide>
-                                <article class="service-cards__card">
-                                    <i data-lucide="luggage" aria-hidden="true"></i>
-
-                                    <h3 class="service-cards__card-title">
-                                        Relocation
-                                    </h3>
-
-                                    <p class="service-cards__card-text">
-                                        A moving schedule or employment change can be included when
-                                        explaining the preferred transaction timeline.
-                                    </p>
-                                </article>
-                            </div>
-                        </div>
+                        <button class="service-property-gallery__filter" type="button"
+                            data-property-filter="timeline" aria-pressed="false">
+                            Flexible Timeline
+                        </button>
                     </div>
 
-                    <div class="service-cards__pagination swiper-pagination" data-service-cards-pagination></div>
+                    <div class="service-property-gallery__grid">
+                        <article class="service-property-gallery__item" data-property-category="all inherited">
+                            <a class="service-property-gallery-card" href="contact.html#property-offer-form">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-inherited.svg"
+                                    alt="Illustrated house with a front picket fence, representing an inherited family property"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="key-round"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Inherited
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Inherited Property
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Ownership documents, probate status, and multiple heirs may
+                                        affect the review and closing path.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Start a Property Review
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="all occupied">
+                            <a class="service-property-gallery-card" href="contact.html#property-offer-form">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-tenant.svg"
+                                    alt="Illustrated house with lit windows, representing a tenant-occupied property"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="user-round"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Occupied
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Tenant-Occupied House
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        The current lease, access arrangements, and possession
+                                        expectations may need to be understood.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Discuss Occupancy
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="all repairs">
+                            <a class="service-property-gallery-card" href="sell-house-as-is.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-repairs.svg"
+                                    alt="Illustrated house with a ladder leaning against it, representing a property that needs repairs"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="hammer"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Repairs Needed
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Property Needing Repairs
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Known damage, unfinished work, and deferred maintenance can
+                                        be described before the review.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Sell As-Is
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="all vacant">
+                            <a class="service-property-gallery-card" href="we-buy-houses-in-your-area.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-vacant.svg"
+                                    alt="Illustrated house with a boarded window, representing a vacant property"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="door-open"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Vacant
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Vacant Property
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Security, access, remaining belongings, and deferred
+                                        exterior care may require clarification.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Check Your Area
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="all timeline">
+                            <a class="service-property-gallery-card" href="contact.html#property-offer-form">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-relocation.svg"
+                                    alt="Illustrated house with packed moving boxes out front, representing a relocation timeline"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="luggage"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Flexible Timeline
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Relocation Timeline
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        A moving schedule or employment change can be included when
+                                        explaining the preferred transaction timeline.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Share Your Timeline
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="all repairs vacant">
+                            <a class="service-property-gallery-card" href="get-a-cash-offer.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-condition.svg"
+                                    alt="Illustrated house with overgrown vines on the front wall, representing a property in difficult condition"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="triangle-alert"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Repairs Needed
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Difficult Property Condition
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Describe damage, neglect, or cleanup needs without preparing
+                                        the property for public showings.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Request a Review
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="repairs">
+                            <a class="service-property-gallery-card" href="sell-house-as-is.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-renovation.svg"
+                                    alt="Illustrated house with scaffolding on one side, representing an unfinished renovation"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="brick-wall"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Repairs Needed
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Unfinished Renovation
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Show what work was started and what remains instead of
+                                        completing the renovation first.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Sell As-Is
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="timeline">
+                            <a class="service-property-gallery-card" href="get-a-cash-offer.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-closing.svg"
+                                    alt="Illustrated house beside a calendar, representing a flexible closing timeline"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="calendar-clock"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Flexible Timeline
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Flexible Closing Request
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Share a preferred closing date range before deciding whether
+                                        a direct sale fits your plans.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Get a Cash Offer
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+
+                        <article class="service-property-gallery__item" data-property-category="timeline">
+                            <a class="service-property-gallery-card" href="compare-to-listing.html">
+                                <img class="service-property-gallery-card__image"
+                                    src="assets/images/home/situation-no-listing.svg"
+                                    alt="Illustrated house with a blank yard sign, representing a sale without a public listing"
+                                    width="900" height="1200" loading="lazy">
+
+                                <i class="service-property-gallery-card__icon" data-lucide="columns-2"
+                                    aria-hidden="true"></i>
+
+                                <span class="service-property-gallery-card__overlay" aria-hidden="true"></span>
+
+                                <span class="service-property-gallery-card__content">
+                                    <span class="service-property-gallery-card__category">
+                                        Flexible Timeline
+                                    </span>
+
+                                    <span class="service-property-gallery-card__title">
+                                        Selling Without a Listing First
+                                    </span>
+
+                                    <span class="service-property-gallery-card__text">
+                                        Compare a direct-sale review with the time and steps involved
+                                        in a traditional public listing.
+                                    </span>
+
+                                    <span class="service-property-gallery-card__link">
+                                        Compare Routes
+                                    </span>
+                                </span>
+                            </a>
+                        </article>
+                    </div>
+
+                    <p class="service-property-gallery__status" data-property-gallery-status role="status"
+                        aria-live="polite"></p>
                 </div>
             </section>
 

@@ -807,6 +807,123 @@
             });
     };
 
+    const propertyGalleryTimers = new WeakMap();
+
+    const getPropertyGalleryCategories = (item) => {
+        return String(item.dataset.propertyCategory || "")
+            .trim()
+            .toLowerCase()
+            .split(/\s+/)
+            .filter(Boolean);
+    };
+
+    const hidePropertyGalleryItem = (item) => {
+        const existingTimer = propertyGalleryTimers.get(item);
+
+        if (existingTimer) {
+            window.clearTimeout(existingTimer);
+        }
+
+        item.classList.add("is-filtered-out");
+
+        const delay = reducedMotionQuery.matches ? 0 : 360;
+
+        const timer = window.setTimeout(() => {
+            item.hidden = true;
+            propertyGalleryTimers.delete(item);
+        }, delay);
+
+        propertyGalleryTimers.set(item, timer);
+    };
+
+    const showPropertyGalleryItem = (item) => {
+        const existingTimer = propertyGalleryTimers.get(item);
+
+        if (existingTimer) {
+            window.clearTimeout(existingTimer);
+            propertyGalleryTimers.delete(item);
+        }
+
+        item.hidden = false;
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                item.classList.remove("is-filtered-out");
+            });
+        });
+    };
+
+    const initializePropertyGallery = () => {
+        const gallery = document.querySelector("[data-property-gallery]");
+
+        if (!gallery) {
+            return;
+        }
+
+        const filterButtons = Array.from(
+            gallery.querySelectorAll("[data-property-filter]")
+        );
+
+        const items = Array.from(
+            gallery.querySelectorAll("[data-property-category]")
+        );
+
+        if (!filterButtons.length || !items.length) {
+            return;
+        }
+
+        const applyPropertyFilter = (filterValue, activeButton) => {
+            const normalizedFilter =
+                String(filterValue || "all").trim().toLowerCase();
+
+            filterButtons.forEach((button) => {
+                const selected = button === activeButton;
+
+                button.classList.toggle("is-active", selected);
+                button.setAttribute("aria-pressed", selected ? "true" : "false");
+            });
+
+            let visibleCount = 0;
+
+            items.forEach((item) => {
+                const categories = getPropertyGalleryCategories(item);
+                const shouldShow = categories.includes(normalizedFilter);
+
+                if (shouldShow) {
+                    visibleCount += 1;
+                    showPropertyGalleryItem(item);
+                } else {
+                    hidePropertyGalleryItem(item);
+                }
+            });
+
+            const status = gallery.querySelector(
+                "[data-property-gallery-status]"
+            );
+
+            if (status) {
+                const label =
+                    activeButton?.textContent?.trim() ||
+                    normalizedFilter.replace(/-/g, " ");
+
+                status.textContent = `${visibleCount} property situation${visibleCount === 1 ? "" : "s"
+                    } shown for ${label}.`;
+            }
+        };
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                applyPropertyFilter(button.dataset.propertyFilter, button);
+            });
+        });
+
+        const initialButton =
+            filterButtons.find((button) => button.classList.contains("is-active")) ||
+            filterButtons[0];
+
+        applyPropertyFilter(initialButton.dataset.propertyFilter, initialButton);
+    };
+
     const createCardsSliderStructure = (
         slider
     ) => {
@@ -1487,6 +1604,7 @@
         initializeExpandableCards();
         initializeFlipCards();
         initializeCardsSliders();
+        initializePropertyGallery();
         initializeAccordions();
 
         bindGlobalEvents();
