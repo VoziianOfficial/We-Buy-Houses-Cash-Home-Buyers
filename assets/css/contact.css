@@ -1785,19 +1785,7 @@
     isolation: isolate;
 }
 
-.contact-pulse::before {
-    position: absolute;
-    top: 0;
-    right: clamp(152px, 17vw, 290px);
-    z-index: 4;
-    width: 1px;
-    height: 100%;
-    background: rgba(7, 16, 23, 0.14);
-    content: "";
-    transform: rotate(9deg);
-    transform-origin: center;
-    pointer-events: none;
-}
+
 
 .contact-pulse__line {
     position: absolute;
