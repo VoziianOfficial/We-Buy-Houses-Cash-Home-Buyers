@@ -1000,6 +1000,65 @@
         cardsSliders.push(swiper);
     };
 
+    const initializeTestimonialsSlider = () => {
+        const slider = document.querySelector(
+            "[data-service-testimonials-slider]"
+        );
+
+        if (
+            !slider ||
+            slider.dataset.swiperInitialized ===
+            "true" ||
+            typeof window.Swiper !== "function"
+        ) {
+            return;
+        }
+
+        const pagination = slider
+            .closest(".service-testimonials__card")
+            ?.querySelector(
+                "[data-service-testimonials-pagination]"
+            );
+
+        const swiper = new window.Swiper(
+            slider,
+            {
+                slidesPerView: 1,
+                speed: reducedMotionQuery.matches
+                    ? 0
+                    : 620,
+                loop: true,
+                autoHeight: true,
+                grabCursor: true,
+                watchOverflow: true,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                },
+                pagination: pagination
+                    ? {
+                        el: pagination,
+                        clickable: true
+                    }
+                    : undefined,
+                a11y: {
+                    enabled: true,
+                    prevSlideMessage:
+                        "Previous testimonial",
+                    nextSlideMessage:
+                        "Next testimonial",
+                    paginationBulletMessage:
+                        "Show testimonial {{index}}"
+                }
+            }
+        );
+
+        slider.dataset.swiperInitialized =
+            "true";
+
+        slider.swiper = swiper;
+    };
+
     const initializeCardsSliders = () => {
         document
             .querySelectorAll(
@@ -1672,6 +1731,7 @@
         initializeHeroSliders();
         initializeExpandableCards();
         initializeCardsSliders();
+        initializeTestimonialsSlider();
         initializePhotoGalleries();
         initializePropertyGallery();
         initializeAccordions();
