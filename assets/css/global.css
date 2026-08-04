@@ -316,6 +316,106 @@ address {
     margin-inline: auto;
 }
 
+/* ==========================================================================
+   Parallax Photo/Text Strip
+   ========================================================================== */
+
+.parallax-strip {
+    background: var(--color-white);
+}
+
+.parallax-strip .site-eyebrow {
+    color: #116c98;
+}
+
+.parallax-strip .site-copy {
+    margin-inline: auto;
+    color: #42515b;
+}
+
+.parallax-strip__frame {
+    position: relative;
+    min-height: clamp(240px, 30vw, 440px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.parallax-strip__frame::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 10, 13, 0.12), rgba(7, 10, 13, 0.32));
+    content: "";
+}
+
+.parallax-strip__frame-caption {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.parallax-strip__frame-caption span {
+    padding: 15px 30px;
+    border: 1px solid rgba(247, 248, 246, 0.55);
+    color: var(--color-white);
+    font-family: var(--font-display);
+    font-size: clamp(0.75rem, 0.7rem + 0.22vw, 0.92rem);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-align: center;
+    text-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+}
+
+.parallax-strip__body {
+    padding-block: clamp(64px, 8vw, 108px);
+}
+
+.parallax-strip__heading {
+    margin-top: 16px;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: clamp(1.15rem, 0.8rem + 2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.06;
+    white-space: nowrap;
+}
+
+.parallax-strip__heading em {
+    color: #116c98;
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+    .parallax-strip__frame {
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 560px) {
+    .parallax-strip__frame {
+        min-height: 220px;
+    }
+
+    .parallax-strip__frame-caption span {
+        padding: 12px 20px;
+        letter-spacing: 0.2em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallax-strip__frame {
+        background-attachment: scroll;
+    }
+}
+
 .site-button-row {
     display: flex;
     flex-wrap: wrap;
