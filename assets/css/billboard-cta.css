@@ -22,7 +22,7 @@
     --billboard-duration: 1100ms;
     --billboard-stagger: 45ms;
     --billboard-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-    --billboard-radius: 32px 8px 32px 8px;
+    --billboard-radius: 22px;
 
     position: relative;
     width: 100%;
@@ -34,44 +34,74 @@
     min-width: 0;
     overflow: hidden;
     border-radius: var(--billboard-radius);
-    background: var(--billboard-accent);
+    border: 1px solid rgba(169, 231, 255, 0.45);
+    background:
+        radial-gradient(circle at 78% 22%, rgba(247, 248, 246, 0.42), transparent 18%),
+        linear-gradient(135deg, rgba(88, 199, 255, 0.86), rgba(88, 199, 255, 0.36)),
+        rgba(88, 199, 255, 0.64);
     color: var(--billboard-ink);
-    box-shadow: 0 24px 60px rgba(7, 16, 23, 0.12);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.58),
+        inset 0 -34px 80px rgba(7, 16, 23, 0.12),
+        0 28px 70px rgba(7, 16, 23, 0.18);
+    backdrop-filter: blur(18px) saturate(1.28);
+    -webkit-backdrop-filter: blur(18px) saturate(1.28);
 }
 
 .billboard-cta__card::before,
 .billboard-cta__card::after {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 3;
-    width: clamp(150px, 19vw, 280px);
-    background-image:
-        linear-gradient(90deg, rgba(7, 16, 23, 0.1), rgba(7, 16, 23, 0)),
-        var(--billboard-image-url);
-    background-size: cover;
-    background-position: center;
     content: "";
-    opacity: 0.38;
     pointer-events: none;
 }
 
 .billboard-cta__card::before {
-    left: 0;
-    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 54%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 0%, #000 54%, transparent 100%);
+    top: 50%;
+    right: clamp(28px, 5vw, 74px);
+    z-index: 3;
+    width: clamp(122px, 15vw, 210px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(247, 248, 246, 0.58);
+    border-radius: 50%;
+    background-image:
+        radial-gradient(circle at 32% 28%, rgba(247, 248, 246, 0.62), rgba(247, 248, 246, 0.08) 34%, transparent 64%),
+        var(--billboard-image-url);
+    background-size: cover, 280%;
+    background-position: center;
+    box-shadow:
+        inset 0 0 34px rgba(247, 248, 246, 0.38),
+        0 18px 50px rgba(7, 16, 23, 0.22);
+    opacity: 0.48;
+    transform: translateY(-50%);
+    transition:
+        opacity 360ms ease,
+        transform 360ms ease;
 }
 
 .billboard-cta__card::after {
+    top: 0;
     right: 0;
-    transform: scaleX(-1);
-    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 54%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 0%, #000 54%, transparent 100%);
+    bottom: 0;
+    z-index: 2;
+    width: clamp(220px, 28vw, 430px);
+    background-image:
+        linear-gradient(90deg, rgba(88, 199, 255, 0), rgba(7, 16, 23, 0.16)),
+        var(--billboard-image-url);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.22;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 32%, #000 100%);
+    transition: opacity 360ms ease;
 }
 
-.billboard-cta.is-photo .billboard-cta__card::before,
+.billboard-cta.is-photo .billboard-cta__card::before {
+    opacity: 0.28;
+    transform: translateY(-50%) scale(1.08);
+}
+
 .billboard-cta.is-photo .billboard-cta__card::after {
-    opacity: 0;
+    opacity: 0.08;
 }
 
 /* ---------- color modifiers ---------- */
@@ -82,23 +112,23 @@
 }
 
 .billboard-cta--sky-light {
-    --billboard-accent: var(--color-sky-light);
+    --billboard-accent: var(--color-sky);
     --billboard-ink: var(--color-ink);
 }
 
 .billboard-cta--charcoal {
-    --billboard-accent: var(--color-charcoal);
-    --billboard-ink: var(--color-white);
+    --billboard-accent: var(--color-sky);
+    --billboard-ink: var(--color-ink);
 }
 
 .billboard-cta--surface {
-    --billboard-accent: var(--color-surface);
-    --billboard-ink: var(--color-white);
+    --billboard-accent: var(--color-sky);
+    --billboard-ink: var(--color-ink);
 }
 
 .billboard-cta--ink {
-    --billboard-accent: var(--color-ink);
-    --billboard-ink: var(--color-white);
+    --billboard-accent: var(--color-sky);
+    --billboard-ink: var(--color-ink);
 }
 
 /* ---------- slats (billboard flip layer) ---------- */
@@ -137,7 +167,9 @@
 }
 
 .billboard-cta__face--front {
-    background-color: var(--billboard-accent);
+    background:
+        linear-gradient(135deg, rgba(88, 199, 255, 0.78), rgba(88, 199, 255, 0.42)),
+        rgba(88, 199, 255, 0.72);
     transform: rotateY(0deg);
 }
 
@@ -167,24 +199,76 @@
 /* ---------- content layer ---------- */
 
 .billboard-cta__content {
+    --billboard-content-inset: clamp(14px, 1.8vw, 23px);
+
     position: relative;
     z-index: 5;
     display: grid;
-    grid-template-columns: minmax(108px, 0.55fr) minmax(240px, 1.1fr) minmax(260px, 1fr) auto;
+    grid-template-columns: minmax(112px, 0.42fr) minmax(250px, 0.98fr) minmax(260px, 1fr) auto;
     align-items: center;
     justify-content: center;
-    gap: clamp(18px, 2.4vw, 34px);
-    height: 100%;
-    width: 100%;
+    gap: clamp(16px, 2.2vw, 30px);
+    height: calc(100% - (var(--billboard-content-inset) * 2));
+    width: calc(100% - (var(--billboard-content-inset) * 2));
     max-width: none;
     min-width: 0;
-    padding: clamp(24px, 3.2vw, 46px) clamp(28px, 4.5vw, 64px);
+    margin: var(--billboard-content-inset);
+    padding: clamp(18px, 2.5vw, 34px) clamp(22px, 3.8vw, 50px);
+    border: 1px solid rgba(247, 248, 246, 0.5);
+    border-radius: calc(var(--billboard-radius) - 8px);
+    background:
+        linear-gradient(135deg, rgba(247, 248, 246, 0.28), rgba(247, 248, 246, 0.1)),
+        rgba(169, 231, 255, 0.18);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.62),
+        inset 0 -22px 50px rgba(7, 16, 23, 0.08),
+        0 16px 40px rgba(7, 16, 23, 0.12);
+    backdrop-filter: blur(18px) saturate(1.32);
+    -webkit-backdrop-filter: blur(18px) saturate(1.32);
     text-align: left;
     opacity: 1;
     transform: translateY(0);
     transition:
         opacity 260ms ease,
         transform 260ms ease;
+}
+
+.billboard-cta__content::before {
+    position: absolute;
+    top: clamp(14px, 1.6vw, 22px);
+    right: clamp(18px, 2.2vw, 30px);
+    z-index: -1;
+    width: clamp(72px, 8vw, 118px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(247, 248, 246, 0.55);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%, rgba(247, 248, 246, 0.8), rgba(247, 248, 246, 0.14) 34%, transparent 64%),
+        rgba(88, 199, 255, 0.18);
+    box-shadow:
+        inset 0 0 26px rgba(247, 248, 246, 0.34),
+        0 16px 34px rgba(7, 16, 23, 0.12);
+    content: "";
+    opacity: 0.58;
+    pointer-events: none;
+}
+
+.billboard-cta__content::after {
+    position: absolute;
+    right: clamp(18px, 2.3vw, 34px);
+    bottom: clamp(16px, 2vw, 28px);
+    width: 96px;
+    height: 28px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 14px 50%, rgba(7, 16, 23, 0.66) 0 4px, transparent 5px),
+        radial-gradient(circle at 48px 50%, rgba(7, 16, 23, 0.48) 0 4px, transparent 5px),
+        radial-gradient(circle at 82px 50%, rgba(7, 16, 23, 0.34) 0 4px, transparent 5px),
+        rgba(247, 248, 246, 0.18);
+    box-shadow: inset 0 1px 0 rgba(247, 248, 246, 0.42);
+    content: "";
+    opacity: 0.66;
+    pointer-events: none;
 }
 
 .billboard-cta__content.is-hidden {
@@ -198,15 +282,39 @@
 }
 
 .billboard-cta__eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     max-width: 14ch;
     margin: 0;
     font-family: var(--font-body);
-    font-size: clamp(0.78rem, 0.72rem + 0.18vw, 0.9rem);
+    font-size: clamp(0.76rem, 0.72rem + 0.12vw, 0.86rem);
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.25;
-    opacity: 0.82;
+    opacity: 0.9;
+}
+
+.billboard-cta__eyebrow::before {
+    display: inline-grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(7, 16, 23, 0.16);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 34% 28%, rgba(247, 248, 246, 0.95), rgba(247, 248, 246, 0.22) 40%, transparent 68%),
+        rgba(7, 16, 23, 0.08);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.5),
+        0 10px 22px rgba(7, 16, 23, 0.12);
+    color: var(--color-ink);
+    content: "+";
+    font-size: 1.15rem;
+    line-height: 1;
 }
 
 .billboard-cta__title {
@@ -224,17 +332,30 @@
 }
 
 .billboard-cta__text {
+    position: relative;
     display: -webkit-box;
     max-width: 38ch;
     margin: 0;
+    padding-left: 18px;
     overflow: hidden;
     color: currentColor;
-    opacity: 0.84;
-    font-size: clamp(1rem, 0.94rem + 0.22vw, 1.16rem);
+    opacity: 0.78;
+    font-size: clamp(0.96rem, 0.92rem + 0.18vw, 1.08rem);
     font-weight: 600;
     line-height: 1.45;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+.billboard-cta__text::before {
+    position: absolute;
+    top: 0.18em;
+    bottom: 0.18em;
+    left: 0;
+    width: 3px;
+    border-radius: 999px;
+    background: rgba(7, 16, 23, 0.28);
+    content: "";
 }
 
 .billboard-cta__actions {
@@ -254,12 +375,20 @@
     flex: 0 0 auto;
     align-items: center;
     justify-content: center;
-    width: clamp(52px, 5vw, 64px);
-    height: clamp(52px, 5vw, 64px);
-    border: 1.5px solid currentColor;
+    width: clamp(54px, 5vw, 68px);
+    height: clamp(54px, 5vw, 68px);
+    border: 1px solid rgba(7, 16, 23, 0.2);
     border-radius: 50%;
-    color: currentColor;
-    opacity: 0.9;
+    color: var(--color-ink);
+    background:
+        radial-gradient(circle at 34% 26%, rgba(247, 248, 246, 0.78), rgba(247, 248, 246, 0.14) 42%, transparent 68%),
+        rgba(247, 248, 246, 0.2);
+    box-shadow:
+        inset 0 1px 0 rgba(247, 248, 246, 0.56),
+        0 12px 24px rgba(7, 16, 23, 0.16);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition:
         background-color var(--transition-fast),
         color var(--transition-fast),
@@ -275,8 +404,8 @@
 
 .billboard-cta__icon-button:hover,
 .billboard-cta__icon-button:focus-visible {
-    background-color: var(--billboard-ink);
-    color: var(--billboard-accent);
+    background-color: rgba(7, 16, 23, 0.82);
+    color: var(--color-white);
     opacity: 1;
     transform: translateY(-2px);
 }
@@ -299,8 +428,8 @@
 
     .billboard-cta__card::before,
     .billboard-cta__card::after {
-        width: clamp(110px, 22vw, 190px);
-        opacity: 0.26;
+        width: clamp(96px, 18vw, 160px);
+        opacity: 0.34;
     }
 
     .billboard-cta__content,
@@ -311,6 +440,9 @@
             "title actions"
             "text actions";
         gap: 10px clamp(18px, 4vw, 34px);
+        height: calc(100% - 28px);
+        margin: 14px;
+        padding: 24px;
     }
 
     .billboard-cta__eyebrow {
@@ -345,24 +477,33 @@
 
     .billboard-cta__card::before,
     .billboard-cta__card::after {
-        width: 50%;
-        height: 36%;
-        bottom: auto;
-        opacity: 0.2;
-        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 46%, transparent 100%);
-        mask-image: linear-gradient(180deg, #000 0%, #000 46%, transparent 100%);
+        opacity: 0;
     }
 
     .billboard-cta__content,
     .billboard-cta--content-right .billboard-cta__content {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: auto;
         max-width: 100%;
         align-items: center;
+        justify-content: center;
+        height: calc(100% - 24px);
         margin-left: 0;
-        padding: clamp(24px, 6vw, 34px);
+        margin: 12px;
+        padding: clamp(22px, 6vw, 32px);
         text-align: center;
+    }
+
+    .billboard-cta__content::before {
+        top: 16px;
+        right: 16px;
+        width: 70px;
+        opacity: 0.38;
+    }
+
+    .billboard-cta__content::after {
+        display: none;
     }
 
     .billboard-cta__eyebrow {
@@ -377,6 +518,14 @@
 
     .billboard-cta__title {
         font-size: clamp(2rem, 1.66rem + 1.2vw, 2.35rem);
+    }
+
+    .billboard-cta__text {
+        padding-left: 0;
+    }
+
+    .billboard-cta__text::before {
+        display: none;
     }
 
     .billboard-cta__actions,

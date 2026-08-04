@@ -99,9 +99,11 @@
                 return;
             }
 
+            this.resolvedImage = new URL(this.image, window.location.href).href;
+
             this.root.style.setProperty(
                 "--billboard-image-url",
-                `url("${this.image}")`
+                `url("${this.resolvedImage}")`
             );
 
             this.buildFallback();
@@ -120,7 +122,7 @@
             const fallback = document.createElement("div");
             fallback.className = "billboard-cta__photo-fallback";
             fallback.setAttribute("aria-hidden", "true");
-            fallback.style.backgroundImage = `url("${this.image}")`;
+            fallback.style.backgroundImage = `url("${this.resolvedImage}")`;
             this.slatsHost.insertAdjacentElement("afterend", fallback);
             this.fallback = fallback;
         }
@@ -151,7 +153,7 @@
                 const back = document.createElement("div");
                 back.className =
                     "billboard-cta__face billboard-cta__face--back";
-                back.style.backgroundImage = `url("${this.image}")`;
+                back.style.backgroundImage = `url("${this.resolvedImage}")`;
 
                 slatEl.appendChild(front);
                 slatEl.appendChild(back);
@@ -243,10 +245,6 @@
 
             const showPhoto = !this.isPhoto;
 
-            if (this.content) {
-                this.content.classList.add("is-hidden");
-            }
-
             window.setTimeout(() => {
                 const usingSlats =
                     !reducedMotionQuery.matches && this.slats.length > 0;
@@ -268,10 +266,6 @@
                     : REDUCED_FADE_MS * 0.6;
 
                 window.setTimeout(() => {
-                    if (this.content && !showPhoto) {
-                        this.content.classList.remove("is-hidden");
-                    }
-
                     this.isAnimating = false;
                 }, settleMs);
             }, CONTENT_FADE_MS);
