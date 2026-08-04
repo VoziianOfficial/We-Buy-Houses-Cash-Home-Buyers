@@ -103,6 +103,12 @@ window.SITE_CONFIG = Object.freeze({
             "label": "Request an Offer",
             "href": "contact.html#property-offer-form",
             "icon": "key-round"
+        },
+
+        "contactCta": {
+            "label": "Contact",
+            "href": "contact.html",
+            "icon": "phone-call"
         }
     },
 

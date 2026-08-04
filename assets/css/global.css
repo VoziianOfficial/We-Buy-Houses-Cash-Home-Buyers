@@ -1274,6 +1274,10 @@ address {
     flex: 0 0 auto;
 }
 
+.site-header__contact-cta {
+    flex: 0 0 auto;
+}
+
 .site-header__menu-button {
     display: none;
     width: 48px;
@@ -1834,7 +1838,8 @@ textarea:focus-visible,
         height: 40px;
     }
 
-    .site-header__cta {
+    .site-header__cta,
+    .site-header__contact-cta {
         display: none;
     }
 

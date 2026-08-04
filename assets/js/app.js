@@ -196,6 +196,7 @@
         const contact = config.contact || {};
         const site = config.site || {};
         const primaryCta = navigation.primaryCta || {};
+        const contactCta = navigation.contactCta || {};
 
         target.className = "site-header";
 
@@ -251,6 +252,17 @@
             class="site-header__nav site-header__nav--left"
             aria-label="Primary navigation"
           >
+            <a
+              class="site-button site-button--outline site-button--compact site-header__contact-cta"
+              href="${escapeAttribute(contactCta.href || "contact.html")}"
+            >
+              ${createIconMarkup(contactCta.icon || "phone-call")}
+
+              <span>
+                ${escapeHTML(contactCta.label || "Contact")}
+              </span>
+            </a>
+
             ${createNavigationMarkup(
             navigation.desktopLeft,
             "site-header__nav-list",
