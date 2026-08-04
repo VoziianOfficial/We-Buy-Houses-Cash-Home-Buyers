@@ -15,7 +15,7 @@ window.SITE_CONFIG = Object.freeze({
         "language": "en",
         "locale": "en_US",
         "canonicalBase": "https://www.velmorahomeoffers.com",
-        "defaultOgImage": "images/velmora-home-offers-og.jpg",
+        "defaultOgImage": "assets/images/velmora-home-offers-og.jpg",
         "utilityStatus": "Charlotte-area property reviews",
         "utilityContactLabel": "No phone calls required"
     },
@@ -159,7 +159,7 @@ window.SITE_CONFIG = Object.freeze({
 
             "heroSlides": [
                 {
-                    "image": "images/cash-offer-hero-a.jpg",
+                    "image": "assets/images/cash-offer-hero-a.jpg",
                     "eyebrow": "Tailored property review",
                     "title": "Request a Cash Offer",
                     "text": "Tell us about the property and explore whether a direct cash-sale option may fit your circumstances.",
@@ -173,7 +173,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/cash-offer-hero-b.jpg",
+                    "image": "assets/images/cash-offer-hero-b.jpg",
                     "eyebrow": "Based on your details",
                     "title": "A Review Built Around the Property",
                     "text": "Location, condition, occupancy, and title details all factor into whether a written offer can be presented.",
@@ -187,7 +187,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/cash-offer-hero-c.jpg",
+                    "image": "assets/images/cash-offer-hero-c.jpg",
                     "eyebrow": "No obligation to accept",
                     "title": "Consider the Terms on Your Time",
                     "text": "Submitting details does not obligate you to sell. Review any available terms before deciding how to proceed.",
@@ -218,7 +218,7 @@ window.SITE_CONFIG = Object.freeze({
 
             "heroSlides": [
                 {
-                    "image": "images/sell-as-is-hero-a.jpg",
+                    "image": "assets/images/sell-as-is-hero-a.jpg",
                     "eyebrow": "Sell in the current condition",
                     "title": "Sell Your House As-Is",
                     "text": "Describe the property as it exists today and explore whether a direct as-is sale may be available.",
@@ -232,7 +232,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/sell-as-is-hero-b.jpg",
+                    "image": "assets/images/sell-as-is-hero-b.jpg",
                     "eyebrow": "No staging required",
                     "title": "Skip Repairs and Renovations",
                     "text": "Known repair needs and deferred maintenance can be disclosed honestly instead of fixed before submission.",
@@ -246,7 +246,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/sell-as-is-hero-c.jpg",
+                    "image": "assets/images/sell-as-is-hero-c.jpg",
                     "eyebrow": "A more direct path",
                     "title": "Move at a Pace That Fits You",
                     "text": "Discuss a flexible closing timeline once written terms are available, without a public listing in between.",
@@ -277,7 +277,7 @@ window.SITE_CONFIG = Object.freeze({
 
             "heroSlides": [
                 {
-                    "image": "images/areas-hero-a.jpg",
+                    "image": "assets/images/areas-hero-a.jpg",
                     "eyebrow": "Charlotte-area property reviews",
                     "title": "We Buy Houses in Your Area",
                     "text": "Explore the communities where property submissions may be considered and tell us where the house is located.",
@@ -291,7 +291,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/areas-hero-b.jpg",
+                    "image": "assets/images/areas-hero-b.jpg",
                     "eyebrow": "Charlotte and beyond",
                     "title": "Local Reviews, Wider Reach",
                     "text": "From Matthews to Concord, Gastonia to Fort Mill, requests are reviewed individually across the greater Charlotte area.",
@@ -305,7 +305,7 @@ window.SITE_CONFIG = Object.freeze({
                     }
                 },
                 {
-                    "image": "images/areas-hero-c.jpg",
+                    "image": "assets/images/areas-hero-c.jpg",
                     "eyebrow": "Every neighborhood, every story",
                     "title": "Different Streets. Same Direct Process.",
                     "text": "Whatever the neighborhood or property type, the same individual review process applies from first message to closing.",
@@ -352,7 +352,7 @@ window.SITE_CONFIG = Object.freeze({
     "home": {
         "heroSlides": [
             {
-                "image": "images/home-hero-a.jpg",
+                "image": "assets/images/home-hero-a.jpg",
                 "eyebrow": "Charlotte-Area Cash Home Buyers",
                 "title": "A Clearer Way to Sell Your House",
                 "text": "Share the property details, explore a tailored direct-sale option, and choose whether the process fits your plans.",
@@ -366,7 +366,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/home-hero-b.jpg",
+                "image": "assets/images/home-hero-b.jpg",
                 "eyebrow": "No Repairs. No Showings.",
                 "title": "Sell Your House As-Is",
                 "text": "Describe the property honestly, skip the staging and repairs, and explore whether a direct sale fits its current condition.",
@@ -380,7 +380,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/home-hero-c.jpg",
+                "image": "assets/images/home-hero-c.jpg",
                 "eyebrow": "Charlotte & Surrounding Communities",
                 "title": "A Timeline Built Around You",
                 "text": "From Charlotte to Matthews, Concord, and beyond, discuss a closing timeline that works for your circumstances.",
@@ -601,7 +601,7 @@ window.SITE_CONFIG = Object.freeze({
 
         "heroSlides": [
             {
-                "image": "images/how-it-works-hero-a.jpg",
+                "image": "assets/images/how-it-works-hero-a.jpg",
                 "eyebrow": "The direct-sale process",
                 "title": "How It Works",
                 "text": "Understand each stage before sharing the property details or deciding whether a direct sale fits your plans.",
@@ -615,7 +615,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/how-it-works-hero-b.jpg",
+                "image": "assets/images/how-it-works-hero-b.jpg",
                 "eyebrow": "Step by step",
                 "title": "From First Message to Closing",
                 "text": "Five clear stages guide the review, from sharing property details to coordinating title work and closing.",
@@ -629,7 +629,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/how-it-works-hero-c.jpg",
+                "image": "assets/images/how-it-works-hero-c.jpg",
                 "eyebrow": "No obligation at any step",
                 "title": "Decide at Your Own Pace",
                 "text": "Submitting property details does not require you to accept an offer or continue with a sale.",
@@ -680,7 +680,7 @@ window.SITE_CONFIG = Object.freeze({
 
         "heroSlides": [
             {
-                "image": "images/compare-hero-a.jpg",
+                "image": "assets/images/compare-hero-a.jpg",
                 "eyebrow": "Compare the selling routes",
                 "title": "Direct Sale or Traditional Listing?",
                 "text": "Review the differences before deciding which approach better fits the property, your priorities, and your available timeline.",
@@ -694,7 +694,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/compare-hero-b.jpg",
+                "image": "assets/images/compare-hero-b.jpg",
                 "eyebrow": "Preparation & showings",
                 "title": "Skip the Listing Prep",
                 "text": "A direct sale can skip repairs, staging, and a public showing schedule that a traditional listing typically involves.",
@@ -708,7 +708,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/compare-hero-c.jpg",
+                "image": "assets/images/compare-hero-c.jpg",
                 "eyebrow": "Timeline & certainty",
                 "title": "Weigh Timing Against Certainty",
                 "text": "Consider how financing, showings, and marketing timelines compare to a more direct review process.",
@@ -731,7 +731,7 @@ window.SITE_CONFIG = Object.freeze({
 
         "heroSlides": [
             {
-                "image": "images/faq-hero-a.jpg",
+                "image": "assets/images/faq-hero-a.jpg",
                 "eyebrow": "Seller questions",
                 "title": "Frequently Asked Questions",
                 "text": "Understand what the direct property-review process includes, what it does not guarantee, and what information helps the team review a request.",
@@ -745,7 +745,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/faq-hero-b.jpg",
+                "image": "assets/images/faq-hero-b.jpg",
                 "eyebrow": "Offers & commissions",
                 "title": "What a Review Can (and Can't) Guarantee",
                 "text": "Submitting property information does not guarantee an offer and does not obligate you to sell.",
@@ -759,7 +759,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/faq-hero-c.jpg",
+                "image": "assets/images/faq-hero-c.jpg",
                 "eyebrow": "Still have questions?",
                 "title": "Ask About Your Specific Property",
                 "text": "Every property is reviewed individually, so reach out directly if your situation isn't covered here.",
@@ -778,7 +778,7 @@ window.SITE_CONFIG = Object.freeze({
     "contactPage": {
         "heroSlides": [
             {
-                "image": "images/contact-hero-a.jpg",
+                "image": "assets/images/contact-hero-a.jpg",
                 "eyebrow": "Start with the property details",
                 "title": "Request a Property Review",
                 "text": "Tell us about the house, its current condition, occupancy, and your preferred timeline. The request is non-binding and does not guarantee an offer.",
@@ -792,7 +792,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/contact-hero-b.jpg",
+                "image": "assets/images/contact-hero-b.jpg",
                 "eyebrow": "Partnerships & collaborations",
                 "title": "Advertise & Collaborate",
                 "text": "We are open to thoughtful partnerships, professional collaborations, and property-related requests. Every inquiry is reviewed individually.",
@@ -806,7 +806,7 @@ window.SITE_CONFIG = Object.freeze({
                 }
             },
             {
-                "image": "images/contact-hero-c.jpg",
+                "image": "assets/images/contact-hero-c.jpg",
                 "eyebrow": "Prefer to write directly?",
                 "title": "We Read Every Message",
                 "text": "Email the team directly, or use the form to share details about the property and your timeline.",
