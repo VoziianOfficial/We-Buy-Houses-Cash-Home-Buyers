@@ -549,18 +549,18 @@
               </span>
             </address>
           </div>
+        </div>
 
-          <div class="site-footer__legal-group">
-            <h2 class="site-footer__title">
-              ${escapeHTML(
+        <div class="site-footer__legal-group">
+          <h2 class="site-footer__title">
+            ${escapeHTML(
             footer.legalTitle || "Legal"
         )}
-            </h2>
+          </h2>
 
-            <ul class="site-footer__links">
-              ${createFooterLinkMarkup(legalLinks)}
-            </ul>
-          </div>
+          <ul class="site-footer__links">
+            ${createFooterLinkMarkup(legalLinks)}
+          </ul>
         </div>
       </div>
 
@@ -577,23 +577,6 @@
             footer.copyrightText || ""
         )}
           </p>
-
-          <div class="site-footer__legal">
-            ${legalLinks
-                .map((item) => {
-                    return `
-                  <a
-                    href="${escapeAttribute(item.href || "#")}"
-                    ${isCurrentLink(item.href)
-                            ? 'aria-current="page"'
-                            : ""}
-                  >
-                    ${escapeHTML(item.label || "")}
-                  </a>
-                `;
-                })
-                .join("")}
-          </div>
         </div>
       </div>
     `;
