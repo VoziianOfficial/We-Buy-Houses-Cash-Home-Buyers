@@ -1264,6 +1264,104 @@
         });
     };
 
+    const initializeServiceTabs = () => {
+        document
+            .querySelectorAll("[data-service-tabs]")
+            .forEach((root) => {
+                const rows = Array.from(
+                    root.querySelectorAll("[data-service-tabs-row]")
+                );
+
+                const activateRow = (row) => {
+                    const targetId = row.dataset.serviceTabsRow;
+
+                    rows.forEach((otherRow) => {
+                        const isTarget = otherRow === row;
+
+                        otherRow.classList.toggle(
+                            "is-active",
+                            isTarget
+                        );
+
+                        const button = otherRow.querySelector(
+                            "[data-service-tabs-button]"
+                        );
+
+                        if (button) {
+                            button.setAttribute(
+                                "aria-selected",
+                                isTarget ? "true" : "false"
+                            );
+                            button.setAttribute(
+                                "tabindex",
+                                isTarget ? "0" : "-1"
+                            );
+                        }
+                    });
+
+                    root
+                        .querySelectorAll("[data-service-tabs-panel]")
+                        .forEach((panel) => {
+                            panel.classList.toggle(
+                                "is-active",
+                                panel.dataset.serviceTabsPanel === targetId
+                            );
+                        });
+                };
+
+                rows.forEach((row) => {
+                    const button = row.querySelector(
+                        "[data-service-tabs-button]"
+                    );
+
+                    if (!button) {
+                        return;
+                    }
+
+                    button.addEventListener("mouseenter", () => {
+                        activateRow(row);
+                    });
+
+                    button.addEventListener("focus", () => {
+                        activateRow(row);
+                    });
+
+                    button.addEventListener("click", () => {
+                        activateRow(row);
+                    });
+
+                    button.addEventListener("keydown", (event) => {
+                        const currentIndex = rows.indexOf(row);
+                        let nextIndex = null;
+
+                        if (event.key === "ArrowDown") {
+                            nextIndex = (currentIndex + 1) % rows.length;
+                        } else if (event.key === "ArrowUp") {
+                            nextIndex =
+                                (currentIndex - 1 + rows.length) %
+                                rows.length;
+                        }
+
+                        if (nextIndex === null) {
+                            return;
+                        }
+
+                        event.preventDefault();
+
+                        const nextButton = rows[
+                            nextIndex
+                        ].querySelector(
+                            "[data-service-tabs-button]"
+                        );
+
+                        if (nextButton) {
+                            nextButton.focus();
+                        }
+                    });
+                });
+            });
+    };
+
     const initializeAOS = () => {
         if (
             reducedMotionQuery.matches ||
@@ -1334,6 +1432,7 @@
         bindSamePageLinks();
         updateHeaderState();
         refreshIcons();
+        initializeServiceTabs();
         initializeAOS();
 
         window.addEventListener(
