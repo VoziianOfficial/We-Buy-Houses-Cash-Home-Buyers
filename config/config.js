@@ -553,7 +553,7 @@ window.SITE_CONFIG = Object.freeze({
 
         "faq": {
             "eyebrow": "Frequently asked questions",
-            "title": "Understand the process before you decide.",
+            "title": "Common questions",
 
             "items": [
                 {
