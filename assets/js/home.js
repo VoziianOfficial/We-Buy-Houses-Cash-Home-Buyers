@@ -531,6 +531,89 @@
         instance.slides[instance.activeIndex]?.classList.add("is-open");
     };
 
+    const getPropertyCarouselRealIndex = (instance) => {
+        const slide = instance?.slides?.[instance.activeIndex];
+        const realIndex = Number.parseInt(slide?.dataset.propertyCarouselIndex, 10);
+
+        return Number.isNaN(realIndex) ? 0 : realIndex;
+    };
+
+    const buildPropertyCarouselPagination = (pagination, slideCount, onSelect) => {
+        if (!pagination) {
+            return [];
+        }
+
+        pagination.textContent = "";
+
+        return Array.from({ length: slideCount }, (_, index) => {
+            const bullet = document.createElement("button");
+
+            bullet.className = "home-property-carousel__bullet";
+            bullet.type = "button";
+            bullet.setAttribute("aria-label", `Show property situation ${index + 1}`);
+            bullet.addEventListener("click", () => {
+                onSelect(index);
+            });
+
+            pagination.appendChild(bullet);
+
+            return bullet;
+        });
+    };
+
+    const updatePropertyCarouselPagination = (bullets, activeIndex) => {
+        bullets.forEach((bullet, index) => {
+            const isActive = index === activeIndex;
+
+            bullet.classList.toggle("is-active", isActive);
+            bullet.setAttribute("aria-current", isActive ? "true" : "false");
+        });
+    };
+
+    const duplicatePropertyCarouselSlides = (wrapper, slides) => {
+        const createDuplicateSet = () => {
+            return slides.map((slide, index) => {
+                const clone = slide.cloneNode(true);
+
+                clone.dataset.propertyCarouselIndex = String(index);
+                clone.dataset.propertyCarouselDuplicate = "true";
+                clone.setAttribute("aria-hidden", "true");
+
+                return clone;
+            });
+        };
+
+        slides.forEach((slide, index) => {
+            slide.dataset.propertyCarouselIndex = String(index);
+        });
+
+        const beforeFragment = document.createDocumentFragment();
+        const afterFragment = document.createDocumentFragment();
+
+        createDuplicateSet().forEach((slide) => {
+            beforeFragment.appendChild(slide);
+        });
+
+        createDuplicateSet().forEach((slide) => {
+            afterFragment.appendChild(slide);
+        });
+
+        wrapper.insertBefore(beforeFragment, wrapper.firstChild);
+        wrapper.appendChild(afterFragment);
+    };
+
+    const normalizePropertyCarouselLoop = (instance, originalSlideCount) => {
+        if (!instance || originalSlideCount <= 0) {
+            return;
+        }
+
+        if (instance.activeIndex < originalSlideCount) {
+            instance.slideTo(instance.activeIndex + originalSlideCount, 0, false);
+        } else if (instance.activeIndex >= originalSlideCount * 2) {
+            instance.slideTo(instance.activeIndex - originalSlideCount, 0, false);
+        }
+    };
+
     const recenterPropertyCarousel = (instance) => {
         updateOpenPropertyCarouselSlide(instance);
         instance.updateSlides();
@@ -577,20 +660,36 @@
         const pagination = root.querySelector(
             "[data-home-property-carousel-pagination]"
         );
+        const wrapper = slider.querySelector(".swiper-wrapper");
 
-        const originalSlideCount = slider.querySelectorAll(
-            ".swiper-wrapper > .swiper-slide"
-        ).length;
+        const originalSlides = Array.from(
+            wrapper?.querySelectorAll(":scope > .swiper-slide") || []
+        ).filter((slide) => slide.dataset.propertyCarouselDuplicate !== "true");
+        const originalSlideCount = originalSlides.length;
 
-        if (!originalSlideCount) {
+        if (!wrapper || !originalSlideCount) {
             return;
         }
 
-        const initialSlide = Math.floor(originalSlideCount / 2);
+        duplicatePropertyCarouselSlides(wrapper, originalSlides);
 
-        const propertyCarousel = new window.Swiper(slider, {
+        const initialSlide = originalSlideCount + Math.floor(originalSlideCount / 2);
+        let propertyCarousel;
+        let paginationBullets = [];
+
+        const slideToRealIndex = (index) => {
+            propertyCarousel.slideTo(originalSlideCount + index, propertyCarousel.params.speed);
+        };
+
+        paginationBullets = buildPropertyCarouselPagination(
+            pagination,
+            originalSlideCount,
+            slideToRealIndex
+        );
+
+        propertyCarousel = new window.Swiper(slider, {
             init: false,
-            loop: true,
+            loop: false,
             centeredSlides: true,
             slidesPerView: "auto",
             spaceBetween: 12,
@@ -605,8 +704,6 @@
             observer: true,
             observeParents: true,
             resizeObserver: true,
-            loopAdditionalSlides: originalSlideCount,
-            loopPreventsSliding: false,
             autoplay: reducedMotionQuery.matches
                 ? false
                 : {
@@ -614,12 +711,6 @@
                     disableOnInteraction: false,
                     pauseOnMouseEnter: false
                 },
-            pagination: pagination
-                ? {
-                    el: pagination,
-                    clickable: true
-                }
-                : undefined,
             keyboard: {
                 enabled: true,
                 onlyInViewport: true
@@ -633,14 +724,24 @@
             on: {
                 init(instance) {
                     updateOpenPropertyCarouselSlide(instance);
+                    updatePropertyCarouselPagination(
+                        paginationBullets,
+                        getPropertyCarouselRealIndex(instance)
+                    );
                 },
                 slideChange(instance) {
                     updateOpenPropertyCarouselSlide(instance);
+                    updatePropertyCarouselPagination(
+                        paginationBullets,
+                        getPropertyCarouselRealIndex(instance)
+                    );
                 },
                 slideChangeTransitionEnd(instance) {
+                    normalizePropertyCarouselLoop(instance, originalSlideCount);
                     recenterPropertyCarousel(instance);
                 },
                 resize(instance) {
+                    normalizePropertyCarouselLoop(instance, originalSlideCount);
                     recenterPropertyCarousel(instance);
                 }
             }
@@ -665,7 +766,7 @@
         slider.classList.add("is-positioning");
 
         propertyCarousel.init();
-        propertyCarousel.slideToLoop(initialSlide, 0, false);
+        propertyCarousel.slideTo(initialSlide, 0, false);
         recenterPropertyCarousel(propertyCarousel);
 
         void slider.offsetHeight;

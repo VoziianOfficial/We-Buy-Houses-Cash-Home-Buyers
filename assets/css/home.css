@@ -935,14 +935,9 @@
     color: var(--color-white);
 }
 
-.home-property-carousel .site-container-wide {
-    width: 100%;
-    padding-inline: 0;
-}
-
 .home-property-carousel__stage {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .home-property-carousel__swiper {
@@ -950,13 +945,13 @@
     width: 100%;
     max-width: none;
     margin-inline: auto;
-    overflow: visible;
+    overflow: hidden;
     opacity: 0;
     -webkit-overflow-scrolling: touch;
 }
 
 .home-property-carousel.is-ready .home-property-carousel__swiper {
-    overflow: visible;
+    overflow: hidden;
     opacity: 1;
     transition: opacity 560ms ease;
 }
@@ -1110,10 +1105,12 @@
     margin-top: clamp(18px, 2.6vw, 28px);
 }
 
-.home-property-carousel__pagination .swiper-pagination-bullet {
+.home-property-carousel__bullet {
     width: 8px;
     height: 8px;
+    padding: 0;
     margin: 0 !important;
+    border: 0;
     border-radius: 50%;
     background: var(--color-border);
     opacity: 1;
@@ -1122,7 +1119,7 @@
         background-color var(--transition-medium);
 }
 
-.home-property-carousel__pagination .swiper-pagination-bullet-active {
+.home-property-carousel__bullet.is-active {
     width: 30px;
     border-radius: var(--radius-pill);
     background: var(--color-sky);
