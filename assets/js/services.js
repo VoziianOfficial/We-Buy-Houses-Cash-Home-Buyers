@@ -959,7 +959,7 @@
                 speed: reducedMotionQuery.matches
                     ? 0
                     : 680,
-                loop: false,
+                loop: slides.length > 1,
                 grabCursor: slides.length > 1,
                 watchOverflow: true,
                 keyboard: {
