@@ -1316,6 +1316,152 @@
             });
     };
 
+    const initializeServiceShowcases = () => {
+        document
+            .querySelectorAll("[data-service-showcase]")
+            .forEach((section) => {
+                if (
+                    section.dataset.serviceShowcaseInitialized ===
+                    "true"
+                ) {
+                    return;
+                }
+
+                const items = Array.from(
+                    section.querySelectorAll(
+                        "[data-service-showcase-item]"
+                    )
+                );
+
+                if (!items.length) {
+                    return;
+                }
+
+                const title = section.querySelector(
+                    "[data-service-showcase-title]"
+                );
+                const copy = section.querySelector(
+                    "[data-service-showcase-copy]"
+                );
+                const note = section.querySelector(
+                    "[data-service-showcase-note]"
+                );
+                const primaryImage = section.querySelector(
+                    "[data-service-showcase-primary]"
+                );
+                const secondaryImage = section.querySelector(
+                    "[data-service-showcase-secondary]"
+                );
+
+                const swapImage = (image, nextSrc) => {
+                    if (
+                        !image ||
+                        !nextSrc ||
+                        image.getAttribute("src") === nextSrc
+                    ) {
+                        return;
+                    }
+
+                    image.classList.add("is-changing");
+
+                    window.setTimeout(
+                        () => {
+                            image.setAttribute("src", nextSrc);
+                        },
+                        reducedMotionQuery.matches ? 0 : 80
+                    );
+
+                    const finish = () => {
+                        image.classList.remove("is-changing");
+                    };
+
+                    image.addEventListener(
+                        "load",
+                        finish,
+                        {
+                            once: true
+                        }
+                    );
+
+                    window.setTimeout(
+                        finish,
+                        reducedMotionQuery.matches ? 0 : 420
+                    );
+                };
+
+                const activate = (item) => {
+                    if (!item) {
+                        return;
+                    }
+
+                    items.forEach((candidate) => {
+                        const active = candidate === item;
+
+                        candidate.classList.toggle(
+                            "is-active",
+                            active
+                        );
+                        candidate.setAttribute(
+                            "aria-pressed",
+                            active ? "true" : "false"
+                        );
+                    });
+
+                    if (title && item.dataset.title) {
+                        title.textContent = item.dataset.title;
+                    }
+
+                    if (copy && item.dataset.copy) {
+                        copy.textContent = item.dataset.copy;
+                    }
+
+                    if (note && item.dataset.note) {
+                        note.textContent = item.dataset.note;
+                    }
+
+                    swapImage(
+                        primaryImage,
+                        item.dataset.imagePrimary
+                    );
+                    swapImage(
+                        secondaryImage,
+                        item.dataset.imageSecondary
+                    );
+                };
+
+                items.forEach((item) => {
+                    item.setAttribute(
+                        "aria-pressed",
+                        item.classList.contains("is-active")
+                            ? "true"
+                            : "false"
+                    );
+
+                    item.addEventListener(
+                        "mouseenter",
+                        () => activate(item)
+                    );
+                    item.addEventListener(
+                        "focus",
+                        () => activate(item)
+                    );
+                    item.addEventListener(
+                        "click",
+                        () => activate(item)
+                    );
+                });
+
+                activate(
+                    items.find((item) => {
+                        return item.classList.contains("is-active");
+                    }) || items[0]
+                );
+
+                section.dataset.serviceShowcaseInitialized =
+                    "true";
+            });
+    };
+
     const renderServiceAreas = () => {
         const targets =
             document.querySelectorAll(
@@ -1735,6 +1881,7 @@
         initializePhotoGalleries();
         initializePropertyGallery();
         initializeAccordions();
+        initializeServiceShowcases();
 
         bindGlobalEvents();
         updateMotionEffects();
