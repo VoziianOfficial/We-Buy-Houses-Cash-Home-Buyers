@@ -519,6 +519,178 @@
         slider.swiper = instance;
     };
 
+    const updateOpenPropertyCarouselSlide = (instance) => {
+        if (!instance?.slides?.length) {
+            return;
+        }
+
+        instance.slides.forEach((slide) => {
+            slide.classList.remove("is-open");
+        });
+
+        instance.slides[instance.activeIndex]?.classList.add("is-open");
+    };
+
+    const recenterPropertyCarousel = (instance) => {
+        updateOpenPropertyCarouselSlide(instance);
+        instance.updateSlides();
+        instance.updateSlidesOffset();
+
+        const target = -instance.snapGrid[instance.activeIndex];
+
+        instance.setTranslate(target);
+        instance.updateProgress(target);
+        instance.updateSlidesClasses();
+
+        const activeSlide = instance.slides[instance.activeIndex];
+        const sliderRect = instance.el.getBoundingClientRect();
+        const activeRect = activeSlide?.getBoundingClientRect();
+
+        if (activeRect) {
+            const centerDelta =
+                activeRect.left +
+                activeRect.width / 2 -
+                (sliderRect.left + sliderRect.width / 2);
+            const correctedTarget = target - centerDelta;
+
+            instance.setTranslate(correctedTarget);
+            instance.updateProgress(correctedTarget);
+            instance.updateSlidesClasses();
+        }
+    };
+
+    const initializePropertyCarousel = () => {
+        const root = document.querySelector("[data-home-property-carousel]");
+        const slider = root?.querySelector(
+            "[data-home-property-carousel-swiper]"
+        );
+
+        if (
+            !root ||
+            !slider ||
+            slider.dataset.swiperInitialized === "true" ||
+            typeof window.Swiper !== "function"
+        ) {
+            return;
+        }
+
+        const pagination = root.querySelector(
+            "[data-home-property-carousel-pagination]"
+        );
+
+        const originalSlideCount = slider.querySelectorAll(
+            ".swiper-wrapper > .swiper-slide"
+        ).length;
+
+        if (!originalSlideCount) {
+            return;
+        }
+
+        const initialSlide = Math.floor(originalSlideCount / 2);
+
+        const propertyCarousel = new window.Swiper(slider, {
+            init: false,
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            spaceBetween: 12,
+            speed: reducedMotionQuery.matches ? 0 : 950,
+            grabCursor: true,
+            allowTouchMove: true,
+            simulateTouch: true,
+            touchRatio: 1,
+            slideToClickedSlide: true,
+            slidesPerGroup: 1,
+            watchSlidesProgress: true,
+            observer: true,
+            observeParents: true,
+            resizeObserver: true,
+            loopAdditionalSlides: originalSlideCount,
+            loopPreventsSliding: false,
+            autoplay: reducedMotionQuery.matches
+                ? false
+                : {
+                    delay: 3200,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false
+                },
+            pagination: pagination
+                ? {
+                    el: pagination,
+                    clickable: true
+                }
+                : undefined,
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true
+            },
+            a11y: {
+                enabled: true,
+                prevSlideMessage: "Previous property situation",
+                nextSlideMessage: "Next property situation",
+                paginationBulletMessage: "Show property situation {{index}}"
+            },
+            on: {
+                init(instance) {
+                    updateOpenPropertyCarouselSlide(instance);
+                },
+                slideChange(instance) {
+                    updateOpenPropertyCarouselSlide(instance);
+                },
+                slideChangeTransitionEnd(instance) {
+                    recenterPropertyCarousel(instance);
+                },
+                resize(instance) {
+                    recenterPropertyCarousel(instance);
+                }
+            }
+        });
+
+        slider.addEventListener("click", (event) => {
+            const link = event.target.closest(
+                ".home-property-carousel-card__link"
+            );
+
+            if (!link) {
+                return;
+            }
+
+            const slide = link.closest(".home-property-carousel__slide");
+
+            if (slide && !slide.classList.contains("is-open")) {
+                event.preventDefault();
+            }
+        });
+
+        slider.classList.add("is-positioning");
+
+        propertyCarousel.init();
+        propertyCarousel.slideToLoop(initialSlide, 0, false);
+        recenterPropertyCarousel(propertyCarousel);
+
+        void slider.offsetHeight;
+
+        slider.classList.remove("is-positioning");
+
+        slider.dataset.swiperInitialized = "true";
+        slider.swiper = propertyCarousel;
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                slider.classList.add("is-positioning");
+                recenterPropertyCarousel(propertyCarousel);
+                void slider.offsetHeight;
+                slider.classList.remove("is-positioning");
+
+                root.classList.add("is-ready");
+
+                window.setTimeout(() => {
+                    recenterPropertyCarousel(propertyCarousel);
+                }, reducedMotionQuery.matches ? 0 : 520);
+            });
+        });
+    };
+
     const setPanelState = (button, panel, open) => {
         button.setAttribute("aria-expanded", open ? "true" : "false");
         panel.classList.toggle("is-open", open);
@@ -669,6 +841,7 @@
         initializeGalleryFilters();
         initializeTextPath();
         initializeTestimonials();
+        initializePropertyCarousel();
         initializeFAQ();
         bindGlobalEvents();
         updateScrollEffects();
