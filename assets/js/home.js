@@ -200,6 +200,83 @@
         container.addEventListener("pointerleave", deactivateCards);
     };
 
+    const initializeHighlights = () => {
+        const panel = document.querySelector("[data-highlights-panel]");
+        const list = document.querySelector("[data-highlights-list]");
+
+        if (!panel || !list) {
+            return;
+        }
+
+        const items = Array.from(list.querySelectorAll("[data-highlights-item]"));
+
+        if (!items.length) {
+            return;
+        }
+
+        const panelInner = panel.querySelector("[data-highlights-panel-inner]");
+        const indexElement = panel.querySelector("[data-highlights-index]");
+        const titleElement = panel.querySelector("[data-highlights-title]");
+        const copyElement = panel.querySelector("[data-highlights-copy]");
+
+        const renderItem = (item) => {
+            const label = item.querySelector(".home-highlights__item-label");
+
+            if (indexElement) {
+                indexElement.textContent = item.dataset.index || "";
+            }
+
+            if (titleElement) {
+                titleElement.textContent = (label || item).textContent.trim();
+            }
+
+            if (copyElement) {
+                copyElement.textContent = item.dataset.copy || "";
+            }
+
+            if (panelInner && !reducedMotionQuery.matches) {
+                panelInner.classList.remove("is-animating");
+                void panelInner.offsetWidth;
+                panelInner.classList.add("is-animating");
+            }
+        };
+
+        const activateItem = (item) => {
+            if (item.classList.contains("is-active")) {
+                return;
+            }
+
+            activateExclusiveItem(items, item, "is-active");
+            renderItem(item);
+        };
+
+        items.forEach((item) => {
+            item.addEventListener("pointerenter", () => {
+                if (window.matchMedia("(hover: hover)").matches) {
+                    activateItem(item);
+                }
+            });
+
+            item.addEventListener("focus", () => {
+                activateItem(item);
+            });
+
+            item.addEventListener("click", () => {
+                activateItem(item);
+            });
+
+            item.addEventListener(
+                "touchstart",
+                () => {
+                    activateItem(item);
+                },
+                {
+                    passive: true
+                }
+            );
+        });
+    };
+
     const initializeProcessStages = () => {
         const container = document.querySelector("[data-process-stages]");
 
@@ -1055,6 +1132,7 @@
 
         initializeImageLoading();
         initializeExpandableOptions();
+        initializeHighlights();
         initializeProcessStages();
         initializeGalleryFilters();
         initializePropertyGallery();
