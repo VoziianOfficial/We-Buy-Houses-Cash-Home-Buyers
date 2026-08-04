@@ -40,7 +40,6 @@
         propertyCondition: 120,
         occupancyStatus: 120,
         desiredTimeline: 120,
-        askingPrice: 80,
         message: 5000
     };
 
@@ -262,12 +261,6 @@
             }
         }
 
-        if (name === "askingPrice") {
-            if (value.length > fieldLimits.askingPrice) {
-                message = "The asking price information is too long.";
-            }
-        }
-
         if (name === "message") {
             if (value.length > fieldLimits.message) {
                 message =
@@ -294,7 +287,6 @@
     const validateForm = () => {
         const fieldNames = [
             ...requiredFieldNames,
-            "askingPrice",
             "message"
         ];
 
@@ -522,7 +514,6 @@
             "propertyCondition",
             "occupancyStatus",
             "desiredTimeline",
-            "askingPrice",
             "sourcePage",
             "company"
         ];

@@ -298,7 +298,7 @@
                             </span>
 
                             <h2 class="site-heading contact-form-section__heading" id="contact-form-title">
-                                Property Review Form
+                                Request Review
                             </h2>
 
                             <p class="site-copy contact-form-section__intro">
@@ -397,13 +397,9 @@
 
                                             <input class="contact-field__input" id="email" name="email" type="email"
                                                 autocomplete="email" inputmode="email" maxlength="254" required
-                                                aria-invalid="false" aria-describedby="email-hint email-error"
+                                                aria-invalid="false" aria-describedby="email-error"
                                                 data-form-field>
                                         </div>
-
-                                        <span class="contact-field__hint" id="email-hint">
-                                            Property-request communication is sent by email.
-                                        </span>
 
                                         <span class="contact-field__error" id="email-error" data-error-for="email"
                                             aria-live="polite"></span>
@@ -655,30 +651,7 @@
                                 </legend>
 
                                 <div class="contact-form__grid">
-                                    <div class="contact-field">
-                                        <label class="contact-field__label" for="askingPrice">
-                                            Optional asking price
-                                        </label>
-
-                                        <div class="contact-field__control">
-                                            <i data-lucide="banknote" aria-hidden="true"></i>
-
-                                            <input class="contact-field__input" id="askingPrice" name="askingPrice"
-                                                type="text" inputmode="decimal" maxlength="80" placeholder="Optional"
-                                                aria-invalid="false"
-                                                aria-describedby="askingPrice-hint askingPrice-error" data-form-field>
-                                        </div>
-
-                                        <span class="contact-field__hint" id="askingPrice-hint">
-                                            This is optional and does not determine whether an offer
-                                            will be available.
-                                        </span>
-
-                                        <span class="contact-field__error" id="askingPrice-error"
-                                            data-error-for="askingPrice" aria-live="polite"></span>
-                                    </div>
-
-                                    <div class="contact-field">
+                                    <div class="contact-field contact-field--wide">
                                         <label class="contact-field__label" for="message">
                                             Additional property details
                                         </label>
@@ -687,7 +660,7 @@
                                             <i data-lucide="file-text" aria-hidden="true"></i>
 
                                             <textarea class="contact-field__textarea" id="message" name="message"
-                                                rows="8" maxlength="5000"
+                                                rows="3" maxlength="5000"
                                                 placeholder="Describe repairs, damage, unfinished work, ownership circumstances, access limitations, tenants, remaining belongings, title concerns, or anything else that may help explain the property."
                                                 aria-invalid="false" aria-describedby="message-hint message-error"
                                                 data-form-field></textarea>
@@ -771,10 +744,6 @@
                                         <i data-lucide="loader-circle"></i>
                                     </span>
                                 </button>
-
-                                <p class="contact-form__submit-note">
-                                    The team reviews requests individually and responds by email.
-                                </p>
                             </div>
                         </form>
                     </div>
